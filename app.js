@@ -7,9 +7,9 @@ var db = process.env.MONGO_URL
 var port = process.env.PORT || 4001;
 const student = require('./routes/studentr'); // Imports routes for the products
 const mongoose = require('mongoose');
-const connectDB = require('database/connection')
+const connectDB = require('./database/connection')
 connectDB();
-mongoose.Promise = global.Promise;
+
 
 
 app.use(bodyParser.json());
