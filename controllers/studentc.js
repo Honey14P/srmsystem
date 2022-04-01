@@ -1,6 +1,6 @@
 const Student = require('../models/student');
 
-//Simple version, without validation or sanitation
+
 
 exports.student_create = function (req, res) {
     let student = new Student(
