@@ -1,6 +1,7 @@
 const student = require('../models/student');
 
 //Simple version, without validation or sanitation
+
 exports.student_create = function (req, res) {
     let student = new student(
         {
@@ -16,4 +17,5 @@ exports.student_create = function (req, res) {
         }
         res.send('student Created successfully')
     })
+    
 };

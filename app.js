@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 // initialize our express app
 const app = express();
 var db = process.env.MONGO_URL
-var port = process.env.PORT || 4001;
+var port = process.env.PORT || 3000;
 const student = require('./routes/studentr'); // Imports routes for the products
 const mongoose = require('mongoose');
 const connectDB = require('./database/connection')
