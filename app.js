@@ -14,6 +14,9 @@ connectDB();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.get("/", (req, res) => {
+    res.status(200).send(`Hi Welcome to the Result`);
+  });
 app.use('/student', student);
 
 app.listen(port, () => {
