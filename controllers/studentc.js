@@ -1,9 +1,9 @@
-const student = require('../models/student');
+const Student = require('../models/student');
 
 //Simple version, without validation or sanitation
 
 exports.student_create = function (req, res) {
-    let student = new student(
+    let student = new Student(
         {
             name: req.body.name,
             email: req.body.email,
