@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
     res.status(200).send(`Hi Welcome to the Result`);
   });
 app.use('/student', student);
-app.use('./subject',subject);
+app.use('/subject',subject);
 
 app.listen(port, () => {
     console.log('Server is up and running on port number ' + port);
