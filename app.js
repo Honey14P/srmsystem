@@ -8,6 +8,7 @@ var port = process.env.PORT || 4001;
 const student = require('./routes/studentr'); 
 const subject = require('./routes/subjectr');
 const semester = require('./routes/semester');
+const branch = require('./routes/branch');
 const mongoose = require('mongoose');
 const connectDB = require('./database/connection')
 connectDB();
