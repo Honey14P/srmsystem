@@ -23,6 +23,7 @@ app.get("/", (req, res) => {
 app.use('/student', student);
 app.use('/subject',subject);
 app.use('/semester',semester);
+app.use('/branch',branch);
 
 app.listen(port, () => {
     console.log('Server is up and running on port number ' + port);
