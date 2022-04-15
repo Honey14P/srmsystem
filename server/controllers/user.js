@@ -4,11 +4,7 @@ const express=require('express');
 //Allows to create diff router in seperate file
 const route=express.Router();
 
-const services=require('../services/render');
 
-//ROUTES
-//Root Route with get method
-route.get('/',services.user);
 //route.get('/menu',services.menuRoutes);
 //route.get('/contactus',services.contactusRoutes);
 //route.get('/gallery',services.galleryRoutes);

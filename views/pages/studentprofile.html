@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      body{
+  			font-family:sans-serif;
+  			background: rgb(191,255,240);
+        background: linear-gradient(90deg, rgba(191,255,240,1) 0%, rgba(240,255,194,1) 35%, rgba(255,228,192,1) 100%);
+  		}
+
+      td{
+        padding:10px;
+      }
+
+      input{
+        border-radius: 5px;
+      }
+
+      button{
+  			width: 80px;
+  			height:30px;
+  			border-radius:10px;
+  			background-color: #f0ffc2;
+  		}
+          
+       
+
+    </style>
+  </head>
+  <body background="12.jpg">
+    <div style="display: flex;">
+    <img style="top-margin:30px;bottom-padding:0px;"height="80px" width="80px" src="./Images/dahome.jpeg" />
+    <h1 style="margin-left: 450px;">DAIICT</h1>
+</div><hr>
+<br>
+    <div style="display: flex;">
+     <button align="center" onclick="window.location.href='studenthome.html'">Home</button>
+      <h1 style="margin-left: 380px;">Edit Your Details</h1>
+    </div>
+      <br>
+      
+      <hr>
+    
+    <br><br>
+
+    <div id="main">
+      <center>
+        <form  class="" action="index.html" method="post">
+          <table>
+            <tr>
+              <td><label>Name </label></td>
+              <td><input type="text" name="name" placeholder="Enter your name"> </td>
+            </tr>
+
+            <tr>
+              <td><label>Father's Name </label></td>
+              <td><input type="text" name="fatherName" placeholder="Enter your father's name"> <br></td>
+            </tr>
+
+            <tr>
+              <td><label>Roll Number</label></td>
+              <td><input type="number" name="roolNo" readonly placeholder="Enter your roll number"> <br></td>
+            </tr>
+
+            <tr>
+              <td><label>Email</label></td>
+              <td><input type="email" name="email" readonly placeholder="Enter your Emil ID "> <br></td>
+            </tr>
+
+
+            <tr>
+              <td><label>Gender</label></td>
+              <td>
+                <input type="radio" name="gender"> Male
+                <input type="radio" name="gender"> Female
+                <input type="radio" name="gender"> Other
+              </td>
+
+            </tr>
+
+            <tr>
+              <td><label>Phone number  </label></td>
+              <td><input type="number" name="phoneNumber" placeholder="Enter your phone number"> <br></td>
+            </tr>
+
+
+            <tr>
+              <td align="center" colspan="2"><button type="submit" name="button">Submit</button></td>
+            </tr>
+          </table>
+
+
+        </form>
+      </center>
+    </div>
+  </body>
+</html>

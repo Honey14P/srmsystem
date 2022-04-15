@@ -14,10 +14,13 @@
     "admin-bro-expressjs": "^2.1.1",
     "admin-bro-mongoose": "^0.5.2",
     "all": "^0.0.0",
+    "axios": "^0.26.1",
+    "bcrypt": "^5.0.1",
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.19.2",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^4.6.0",
+    "consolidate": "^0.16.0",
     "cookie-parser": "^1.4.6",
     "csurf": "^1.11.0",
     "debug": "^4.3.4",
@@ -45,6 +48,7 @@
     "session": "^0.1.0",
     "slugify": "^1.6.5",
     "stripe": "^8.217.0",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "swig": "^1.4.2"
   }
 }

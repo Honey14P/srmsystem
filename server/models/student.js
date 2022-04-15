@@ -1,21 +1,42 @@
 const mongoose = require('mongoose');
+const Schema = require('mongoose').Schema;
 
 const studentSchema = mongoose.Schema({
-    
-    
     name:{
         type:String,
-        required: true
+        
     },
+    
     email:{
         type:String,
-        required: true
+       
        
     },
     password:{
         type:String,
-        required:true
-    }
+       
+    },
+
+    rollno:{
+        type:Number,
+      
+
+    },
+
+    gender:{
+        type:String,
+       
+
+    },
+
+    phone:{
+        type:Number,
+       
+    },
+
+    sem: { type: Schema.Types.ObjectId, ref: "semester" },
+  branch: { type: Schema.Types.ObjectId, ref: "branch"}
+
     
 })
 
