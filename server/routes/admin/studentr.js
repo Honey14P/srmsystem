@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 
-const student_controller = require('../controllers/studentc');
+const student_controller = require('../server/controllers/studentc');
 
 
 

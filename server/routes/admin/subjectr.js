@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 
-const subject_controller = require('../controllers/subjectc');
+const subject_controller = require('../server/controllers/subjectc');
 
 
 
