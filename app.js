@@ -16,7 +16,7 @@ const connectDB = require('./server/database/connection')
 
 
 connectDB();
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "views/pages"));
 app.set("view engine", "ejs");
 app.use(morgan('tiny'));
 
