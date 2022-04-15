@@ -1,6 +1,6 @@
 //import './App.css';
 //import "./index.css" ;  
-import Login from './pages/Login';
+import Login from './student/Login';
 
 function App() {
   return (

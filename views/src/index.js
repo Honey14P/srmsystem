@@ -9,5 +9,5 @@ ReactDOM.render(
     <App/>
   </>
   ,
-  document.getElementById("root")   // kaha dikhana hai
+  document.getElementById("root")   
 );
