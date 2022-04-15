@@ -8,6 +8,7 @@ const route = express.Router()
 var User = require("../models/student");
 
 
+
 route.get('/', (req, res) => {
     
             res.render('Home');  
@@ -42,7 +43,7 @@ route.post("/signup",  (req, res) => {
         {
             //res.send(data)
             
-            res.redirect('/');
+            res.redirect('studenthome');
         })
         .catch(err=>
             {
@@ -53,6 +54,10 @@ route.post("/signup",  (req, res) => {
     
   });
   
+  route.get('/studenthome', (req, res) => {
+    
+    res.render('studenthome');  
 
+});
 
 module.exports=route;
