@@ -8,6 +8,7 @@ const app = express();
 var db = process.env.MONGO_URL
 var port = process.env.PORT || 4001;
 const home= require('./server/routes/home');
+
 //const student= require('./server/routes/student');
 //const admin= require('./server/routes/admin');
 
@@ -37,6 +38,7 @@ app.use('/js', express.static(path.resolve(__dirname, "public/js")))
 //app.use('/student',student);
 
 app.use('/',home);
+
 
 app.listen(port, () => {
     console.log('Server is up and running on port number ' + port);
