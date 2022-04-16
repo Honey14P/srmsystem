@@ -30,9 +30,9 @@ app.use(morgan('tiny'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.use('/css', express.static(path.resolve(__dirname, "public/css")))
-app.use('/img', express.static(path.resolve(__dirname, "public/img")))
-app.use('/js', express.static(path.resolve(__dirname, "public/js")))
+//app.use('/css', express.static(path.resolve(__dirname, "public/css")))
+app.use('/img', express.static(path.resolve(__dirname, 'public/img')));
+app.use('/js', express.static(path.resolve(__dirname, 'public/js')))
 
 //app.use('/admin', admin);
 //app.use('/student',student);
