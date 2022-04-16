@@ -12,8 +12,8 @@ exports.branch_create = function (req, res) {
 
     branch.save(function (err) {
         if (err) {
-            return next(err);
-        }
+          return next(err);
+         }
         res.send('branch added successfully')
     })
     

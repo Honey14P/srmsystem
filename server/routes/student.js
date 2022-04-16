@@ -4,8 +4,14 @@ const route = express.Router()
 
 
 var passport = require("passport");
+const csrf = require("csurf");
+
 
 var LocalStrategy = require("passport-local");
+
+
+const csrfProtection = csrf();
+route.use(csrfProtection);
 route.use(require("express-session")({
     secret: "node js mongodb",
     resave: false,
@@ -42,8 +48,9 @@ route.get('/studenthome', (req, res) => {
     res.render('studenthome');  
 
 });
-route.post('/signup',  (req, res) => {
-    const newUser=new User({ name: req.body.name,
+route.post("/signup", (req, res) => {
+    const newUser = {
+        name: req.body.name,
         fname: req.body.fname,
         email: req.body.email,
         rollno: req.body.rollno,
@@ -51,21 +58,39 @@ route.post('/signup',  (req, res) => {
         phone:req.body.phone,
         branch:req.body.branch,
         password:req.body.password,
-        sem:req.body.sem})
-        newUser
-        .save(newUser)
-        .then(data => {
-            //res.send(data)
-           
-            res.render('studenthome');
-            
-        })
-        .catch(err =>{
-            res.status(500).send({
-                message : err.message || "Some error occurred while creating a create operation"
-            });
+        sem:req.body.sem
+    };
+    // Check for user existance
+    User.findOne({ email: newUser.email })
+      .then((user) => {
+        if (user) {
+          req.flash("error", "This email is already exist");
+          return res.redirect('student/signup');
+        }
+  
+        // Store hash in your password.
+        bcrypt.hash(newUser.password, 10, function (err, hash) {
+          newUser.password = hash;
+          // Save user details to the database
+          new User(newUser)
+            .save()
+            .then((result) => {
+              // res.json({ message: 'User is successfully register' });
+              
+              req.session.isLoggedIn = true;
+              req.session.user = {
+                id: result.id,
+                email: result.email,
+                name: result.name,
+              };
+              res.render('/student/login')
+            })
+            .catch((err) => console.log(err));
         });
+      })
+      .catch((err) => console.log(err));
+  });  
 
-});
+
 
 module.exports=route;
