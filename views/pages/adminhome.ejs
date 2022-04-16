@@ -35,7 +35,7 @@
   <body>
     <ul style="list-style-type:none;">
 			<li><img style="top-margin:30px;bottom-padding:0px;"height="80px" width="80px" src="./img/dahome.jpeg" /></li>
-			<li style="top-margin:5px;margin-left:25%;"><h1 style="display:inline;">Result Management System</h1></li>
+			<li style="top-margin:5px;margin-left:35%;"><h1 style="display:inline;">Result Management System</h1></li>
 
       
 
@@ -47,14 +47,20 @@
     <table align="center">
       <tr>
         <td><button onclick="window.location.href='admin/managestudent'">Manage Student</button> </td>
-        <td><button onclick="window.location.href='manageresult.html'">Manage Result</button> </td>
-        <td><button onclick="window.location.href='addannouncement.html'">Add Announcement</button>  </td>
-        <td><button onclick="window.location.href='Home.html'">Log Out</button></td>
+        <td><button onclick="window.location.href='admin/manageresult'">Manage Result</button> </td>
+        <td><button onclick="window.location.href='admin/announcement.ejs'">Add Announcement</button>  </td>
+      
+      </tr>
+    </br>
+    </br>
+    <tr>
+        <td><button onclick="window.location.href='admin/managebranch'">Manage Branch</button> </td>
+        <td><button onclick="window.location.href='admin/managesemester'">Manage semester</button> </td>
+        <td><button onclick="window.location.href='admin/managesubject'">Manage subject</button>  </td>
+        <!-- <td><button onclick="window.location.href='Home.html'">Log Out</button></td>-->
       </tr>
     </table>
-    <% if(errorMessage) { %>
-      <p class="error"> <%= errorMessage %> </p>
-      <% } %>
+    
      <div id="div1">Welcome To Daiict Student.....</div>
 
 
