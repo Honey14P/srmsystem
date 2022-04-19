@@ -2,7 +2,6 @@ const express = require('express');
 const jwt=require("jsonwebtoken");
 const route = express.Router()
 
-
 var passport = require("passport");
 
 
@@ -43,9 +42,14 @@ route.post('/login', async(req, res) => {
         const email=req.body.email;
         const password=req.body.password;
         const useremail = await User.findOne({email:email});
-        const token = await email.generateAuthToken();
+        
         //console.log(`${email} ${password}`)
         if(useremail.password===password){
+            const token = await useremail.generateAuthToken();
+            res.cookie("srms",token,{
+            expires:new Date(Date.now()+1800000),
+           // httpOnly:true
+        });
             res.status(201).render("studenthome");
         }else{
             res.send("Check Credentials");
@@ -107,12 +111,12 @@ route.post('/signup', async(req, res) => {
         //     }
        
          console.log(newUser);
-         const token = await newUser.generateAuthToken();
-         res.cookie("jwt",token,{
-             expires:new Date(Date.now()+1800000),
-             httpOnly:true
-         });
-         console.log(cookie);
+        //  const token = await newUser.generateAuthToken();
+        //  res.cookie("jwt",token,{
+        //      expires:new Date(Date.now()+1800000),
+        //      httpOnly:true
+        //  });
+        //  console.log(cookie);
         let registered = await newUser.save();
         res.status(201).render("login");
 

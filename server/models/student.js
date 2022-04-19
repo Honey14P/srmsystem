@@ -44,7 +44,6 @@ const studentSchema = mongoose.Schema({
     tokens:[{
         token:{
             type:String,
-            required:true
         }
     }]
 //     sem: { type: Schema.Types.ObjectId, ref: "semester" },
