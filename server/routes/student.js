@@ -3,9 +3,10 @@ const jwt=require("jsonwebtoken");
 const route = express.Router()
 
 var passport = require("passport");
-
-
+const cookieParser = require("cookie-parser");
+const decodeCookie = require("jwt-decode");
 var LocalStrategy = require("passport-local");
+route.use(cookieParser()); 
 
 route.use(require("express-session")({
     secret: "node js mongodb",
@@ -19,6 +20,7 @@ var bcrypt = require("bcrypt");
 var User = require("../models/student");
 const { RESOURCES_INITIALIZE } = require('admin-bro');
 const { cookie } = require('express-validator');
+const { application } = require('express');
 route.use(require("express-session")({
 secret: "node js mongodb",
 resave: false,
@@ -36,6 +38,47 @@ route.get('/login', (req, res) => {
     res.render('login');  
 
 });
+route.get('/announcement', (req, res) => {
+    
+    res.render('announcement');  
+
+});
+route.get('/adminhome', (req, res) => {
+    
+    res.render('adminhome');  
+
+});
+route.get('/studenthome', (req, res) => {
+    res.render('studenthome');  
+    
+});
+route.get('/studentprofile', (req, res) => {
+    console.log(`this is cookies ${req.cookies.srms}`);
+    var decoded =decodeCookie(req.cookies.srms);
+    console.log(decoded._id);
+    res.render('studentprofile');  
+
+});
+route.get('/signup', (req, res) => {
+    
+    res.render('signup');  
+
+});
+
+route.get('/managestudent', (req, res) => {
+    
+    res.render('managestudent');  
+
+});
+route.get('/home', (req, res) => {
+    
+    res.render('home');  
+
+});
+
+
+
+
 
 route.post('/login', async(req, res) => {
     try{
@@ -50,6 +93,7 @@ route.post('/login', async(req, res) => {
             expires:new Date(Date.now()+1800000),
            // httpOnly:true
         });
+        
             res.status(201).render("studenthome");
         }else{
             res.send("Check Credentials");
@@ -62,17 +106,9 @@ route.post('/login', async(req, res) => {
     }
 
 });
-route.get('/studenthome', (req, res) => {
-    
-    res.render('studenthome');  
 
-});
 
-route.get('/signup', (req, res) => {
-    
-    res.render('signup');  
 
-});
 
 route.post('/signup', async(req, res) => {
     try{
