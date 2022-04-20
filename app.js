@@ -14,8 +14,15 @@ const admin= require('./server/routes/admin')
 
 const mongoose = require('mongoose');
 const connectDB = require('./server/database/connection')
+const jwt=require("jsonwebtoken");
+const createToken = async() =>{
+const token = await jwt.sign({_id:"fergtfdser"},process.env.SECRET_KEY,{expiresIn: "30 minutes"});
 
-
+console.log(token);
+const userVer =  await jwt.verify(token , process.env.SECRET_KEY);
+console.log(userVer);
+}
+createToken();
 connectDB();
 var cons = require('consolidate');
 
