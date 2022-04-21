@@ -1,29 +1,8 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <style media="screen">
-      
-      td{
-        padding:10px;
-      }
-      table{
-        text-align: center;
-      }
-      thead, tfoot{
-        font-weight:bold;
-      }
-      
-      #div1{
-        display: flex;
-      }
-    </style>
-    <title>Manage Students</title>
-  </head>
-  <!-- <link rel="stylesheet" type="text/css" href="login.css"> -->
+<html>
+<head>
+    <title>Add new Student</title>
 <style>
-  body {
+	body {
     background-color: #19123B
 }
 
@@ -202,66 +181,69 @@ small {
     }
 }
 </style>
+<!-- <link rel="stylesheet" type="text/css" href="login.css"> -->
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
 <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-  <body style="color: white; background-color: #19123B">
-    <div class="myDiv">
+</head>
+<body style=" background-color: #19123B">
+ <div class="myDiv">
      <div class="box1">
-         <img src="C:\Users\Arjun\Downloads\dahome.jpeg" style="border-radius: 50%" height="100px" width="100px">
+         <img src="dahome1.jpeg" style="border-radius: 50%" height="100px" width="100px">
      </div>
      <div class="box2">
          <h2 class="mt-5" style="margin-left: 33%">Result Management System</h2>
-
      </div>
      <div class="box3">
          <div class="form-group mt-3"> <button type="button" class="btn btn-block btn-primary btn-lg"><small><i class="far fa-user pr-2"></i>Home</small></button> </div>
      </div>
  </div>
- <h5 class="mt-5" align="center">Manage Students</h5>
- <form class="" action="/student/deletestudent" method="post">
-    <div id="div1">
-      <table border="1px" align="center">
-        
-        <tr>
-          
-          <td> Name </td>
-          
-          <td> Course Name </td>
-          
-          <td> Roll No. </td>
-          <td> phone</td>
-          <td> email</td>
-          
-          <td>Gender </td>
-          <td>Edit </td>
-          <td>Delete </td>
-          <td>View Result</td>
-        </tr>
-       
-        <tr>
-            <% for(var i = 0;i < user.length ; i++) {%>
-          <td> <strong><%= user[i].name %></strong></td>
-          <td><strong><%= user[i].branch %></strong></td>
-          <td><strong> <%= user[i].rollno %> </strong></td>
-          <td><strong><%= user[i].phone %></strong></td>
-          <td><strong> <%= user[i].email %></strong></td>
-          <td><strong><%= user[i].gender %><strong></td>
-            
-          
-          <td></td>
-          <input type="text" hidden name="val" id="val" value="'<%- user[i].id%>'" >  
+    
 
-          </tr>
-          <td><button type="submit" class="btn btn-block btn-primary btn-lg"><i class="fas fa-trash pr-1"></i></button></td>
-      
-        </tr>
-        <% } %>
-    </table>
-  </div>
-</form>
-    <br><hr><br>
-   
-  </body>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card py-3 px-2">
+                <div class="division">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="line l"></div>
+                        </div>
+                        <div class="col-6"><span>Add Marks</span></div>
+                        <div class="col-3">
+                            <div class="line r"></div>
+                        </div>
+                    </div>
+                </div>
+                <form class="myform" action="/student/addmarks" method="post">
+                    <div class="form-group"> 
+                        <input type="text" id="rollno" name="rollno" class="form-control" placeholder="roll no"> 
+                    </div>
+                    <div class="form-group"> 
+                        <input type="number" id="subject1" name="subject1" class="form-control" placeholder="subject1"> 
+                    </div>
+                    <div class="form-group"> 
+                        <input type="number" id="subject2" name="subject2" class="form-control" placeholder="subject2"> 
+                    </div>
+                    <div class="form-group"> 
+                        <input type="number" id="subject3" name="subject3" class="form-control" placeholder="subject3"> 
+                    </div>
+                    <div class="form-group"> 
+                        <input type="number" id="subject4" name="subject4" class="form-control" placeholder="subject4"> 
+                    </div>
+                    <div class="form-group"> 
+                        <input type="number" id="subject5" name="subject5" class="form-control" placeholder="subject5"> 
+                    </div>
+
+        
+                    <div class="form-group mt-3">
+                         <button type="submit" class="btn btn-block btn-primary btn-lg"><small><i class="far fa-user pr-2"></i>submit</small></button> 
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 </html>

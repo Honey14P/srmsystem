@@ -64,7 +64,7 @@ route.get('/viewmarks', async (req, res) => {
     const user = await User.findById(decoded._id);
     const roll=user.rollno;
     const userroll = await Result.findOne({rollno:roll});
-    res.render('viewmarks',{userroll});
+    res.render('viewmarks',{userroll,user});
 
 
 
