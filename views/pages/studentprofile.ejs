@@ -1,104 +1,35 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <style media="screen">
-      body{
-  			font-family:sans-serif;
-  			background: rgb(191,255,240);
-        background: linear-gradient(90deg, rgba(191,255,240,1) 0%, rgba(240,255,194,1) 35%, rgba(255,228,192,1) 100%);
-  		}
-
-      td{
-        padding:10px;
-      }
-
-      input{
-        border-radius: 5px;
-      }
-
-      button{
-  			width: 80px;
-  			height:30px;
-  			border-radius:10px;
-  			background-color: #f0ffc2;
-  		}
-          
-       
-
-    </style>
-  </head>
-  <body background="12.jpg">
-    <div style="display: flex;">
-    <img style="top-margin:30px;bottom-padding:0px;"height="80px" width="80px" src="./Images/dahome.jpeg" />
-    <h1 style="margin-left: 450px;">DAIICT</h1>
-</div><hr>
-<br>
-    <div style="display: flex;">
-     <button align="center" onclick="window.location.href='studenthome.html'">Home</button>
-      <h1 style="margin-left: 380px;">Edit Your Details</h1>
-    </div>
-      <br>
-      
-      <hr>
-    
-    <br><br>
-
-    <div id="main">
-      <center>
-        <form action="/student/studentprofile" method="get">
-          <table>
-            <tr>
-             
-              <p></p>
-              <td><label>Name </label></td>
-              <td><input type="text" name="fatherName" value='<%- user.name %>'> </td>
-            </tr>
-            
-
-            <tr>
-              <td><label>Roll Number</label></td>
-              <td><input type="number" name="rollNo" value='<%- user.rollno %>'> <br></td>
-            </tr>
-
-            <tr>
-              <td><label>Email</label></td>
-              <td><input type="email" name="email" value='<%- user.email %>'> <br></td>
-            </tr>
-            
-
-            <tr>
-              <td><label>Gender  </label></td>
-              <td><input type="text" name="gender" value='<%- user.gender %>'> <br></td>
-            </tr>
-            <tr>
-              <td><label>Phone  </label></td>
-              <td><input type="number" name="phoneNumber" value='<%- user.phone %>'> <br></td>
-            </tr>
-          
-            <tr>
-              <td><label>Branch  </label></td>
-              <td><input type="text" name="branch" value='<%- user.branch %>'> <br></td>
-            </tr>
-            <tr>
-              <td><label>Semester </label></td>
-              <td><input type="text" name="sem" value='<%- user.sem %>'> <br></td>
-            </tr>
+<html>
+<head>
+	<title>Add new Student</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../.././css/studentprofilenew.css">
+<body>
+	<img src="../.././img/dahome.jpeg" style="border-radius: 48%; margin-right: 85%; margin-top: 5%">
+	<div class="content">
+        <div class="info">
+         	<h2 style="margin-top: -10%">Student Result Management System</h2>
+         	
+        </div>
+      </div>
+<div class="container" id="container">
+		<form action="/student/studentprofile" method="get">
+			<br>
+			<h1>Student Profile</h1>
+			<br>
+			<input type="text" name="name" placeholder="Name"  value='<%- user.name %>'/>
+			<input type="text" name="roll" placeholder="Roll No." value='<%- user.rollno %>' />
+			<input type="email" name="email" placeholder="Email" value='<%- user.email %>'/>
+			<input type="text" name="branch" placeholder="branch" value='<%- user.branch %>'/>
+			<input type="text" name="gender" placeholder="Gender" value='<%- user.gender %>' />
+			<input type="text" name="sem" placeholder="sem" value='<%- user.sem %>'/>
+			<input type="text" name="phone" placeholder="phone" value='<%- user.phone %>' />
+			<button><a style="color: white" href="studenthome"> Home</a></button>
+		</form>
+</div>
 
 
-            <tr>
-              <td align="center" colspan="2"><button onclick="validate" type="submit" name="button">Submit</button></td>
-            </tr>
-          </table>
-
-
-        </form>
-      </center>
-    </div>
-  </body>
-  <script>
-    
-
-  </script>
+</body>
+<script>
+	
+</script>
 </html>
