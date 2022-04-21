@@ -5,12 +5,18 @@ const router = express.Router();
 const branch_controller = require('../controllers/branchc');
 const semester_controller = require('../controllers/semesterc');
 //const subject_controller = require('../controllers/subjectc');
-// const student_controller = require('../controllers/studentc');
+const student_controller = require('../controllers/studentc');
 router.get('/', (req, res) => {
     
     res.render('adminhome');
 
 });
+router.get('/adminlogin', (req, res) => {
+    
+    res.render('adminlogin');
+
+});
+
 router.get('/admin/managestudent', (req, res) => {
     
     res.render('managestudent');  
@@ -74,8 +80,8 @@ router.delete('/branch/:id/delete', branch_controller.branch_delete);
 // router.get('admin/subject/:id', subject_controller.subject_details);
 // router.put('admin/subject/:id/update', subject_controller.subject_update);
 // router.delete('admin/subject/:id/delete', subject_controller.subject_delete);
-// router.post('admin/subject/create', student_controller.student_create);
-// router.get('admin/subject/:id', student_controller.student_details);
+ router.post('admin/subject/create', student_controller.student_create);
+  router.get('admin/subject/:id', student_controller.student_details);
 // router.put('admin/subject/:id/update', student_controller.student_update);
 // router.delete('admin/subject/:id/delete', student_controller.student_delete);
 
