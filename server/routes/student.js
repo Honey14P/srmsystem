@@ -6,34 +6,22 @@ var passport = require("passport");
 const cookieParser = require("cookie-parser");
 const decodeCookie = require("jwt-decode");
 var LocalStrategy = require("passport-local");
-var localStorage=require("node-localstorage").LocalStorage;
+
 route.use(cookieParser()); 
 
-route.use(require("express-session")({
-    secret: "node js mongodb",
-    resave: false,
-    saveUninitialized: false
-    }));
-var passportLocalMongoose = require("passport-local-mongoose");
+
 var bcrypt = require("bcrypt");
 
 
 var User = require("../models/student");
-const { RESOURCES_INITIALIZE } = require('admin-bro');
+
 const { cookie } = require('express-validator');
 const { application } = require('express');
 const cons = require('consolidate');
 const { default: mongoose } = require('mongoose');
-route.use(require("express-session")({
-secret: "node js mongodb",
-resave: false,
-saveUninitialized: false
-}));
+
 route.use(passport.initialize());
 route.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
 
 route.get('/login', (req, res) => {
@@ -69,13 +57,32 @@ route.get('/studentprofile', async (req, res) => {
 });
 route.get('/managestudent', async (req, res) => {
 
-    var decoded =decodeCookie(req.cookies.srms);
-    console.log(decoded._id);
+
+    
     //console.log(decoded._id);
-    const user = await User.find({});
+    const user =  await User.find({});
     res.render('managestudent',{user});
 
 
+});
+route.get('/deletestudent', async (req, res) => {
+
+
+    
+    //console.log(decoded._id);
+    const user =  await User.find({});
+    res.render('deletestudent',{user});
+
+
+});
+
+route.post('/deletestudent', (req, res) => {
+    const id=req.body.value;
+    
+    User.findByIdAndRemove(id, function (err) {
+        if (err) return next(err);
+        res.send('Deleted successfully!');
+    })
 });
 
 
@@ -86,11 +93,7 @@ route.get('/signup', (req, res) => {
 
 });
 
-route.get('/managestudent', (req, res) => {
-    
-    res.render('managestudent');  
 
-});
 route.get('/home', (req, res) => {
     
     res.render('home');  
@@ -120,7 +123,7 @@ route.post('/login', async(req, res) => {
            // httpOnly:true
         });
         
-            res.status(201).render("studenthome");
+            res.status(200).render("studenthome");
         }else{
             res.send("Check Credentials");
         }
@@ -137,11 +140,10 @@ route.post('/login', async(req, res) => {
 
 
 
-route.post('/signup', async(req, res) => {
+route.post('/signup', (req, res) => {
     try{
     if (
-        !req.body.name ||
-        !req.body.fname ||
+        !req.body.name ||   
         !req.body.email ||
         !req.body.rollno ||
         !req.body.gender ||
@@ -155,7 +157,6 @@ route.post('/signup', async(req, res) => {
     console.log(req.body);
         let newUser = new User({
             name: req.body.name,
-            fname: req.body.fname,
             email: req.body.email,
             rollno: req.body.rollno,
             gender:req.body.gender,
@@ -163,25 +164,13 @@ route.post('/signup', async(req, res) => {
             branch:req.body.branch,
             password:req.body.password,
             sem:req.body.sem
-        })
+        });
        
-        //   try {
-        //     const userExist = await User.findOne({ email:email });
         
-        //     if (userExist) {
-        //       console.log(userExist.email);
-        //       return res.status(400).json({ error: "user already exist" });
-        //     }
        
-         console.log(newUser);
-        //  const token = await newUser.generateAuthToken();
-        //  res.cookie("jwt",token,{
-        //      expires:new Date(Date.now()+1800000),
-        //      httpOnly:true
-        //  });
-        //  console.log(cookie);
-        let registered = await newUser.save();
-        res.status(201).render("login");
+        
+        newUser.save();
+        res.status(200).render("login");
 
     }catch(error){
         res.status(400).send("Invalid");
