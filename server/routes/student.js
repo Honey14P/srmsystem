@@ -14,6 +14,7 @@ var bcrypt = require("bcrypt");
 
 
 var User = require("../models/student");
+var Result =require("../models/result");
 
 const { cookie } = require('express-validator');
 const { application } = require('express');
@@ -55,6 +56,19 @@ route.get('/studentprofile', async (req, res) => {
 
 
 });
+route.get('/viewmarks', async (req, res) => {
+    console.log(`this is cookies ${req.cookies.srms}`);
+    var decoded =decodeCookie(req.cookies.srms);
+    console.log(decoded._id);
+    //console.log(decoded._id);
+    const user = await User.findById(decoded._id);
+    const roll=user.rollno;
+    const userroll = await Result.findOne({rollno:roll});
+    res.render('viewmarks',{userroll});
+
+
+
+});
 route.get('/managestudent', async (req, res) => {
 
 
@@ -65,6 +79,56 @@ route.get('/managestudent', async (req, res) => {
 
 
 });
+route.get('/addmarks', (req, res) => {
+
+
+    
+    //console.log(decoded._id);
+    
+    res.render('addmarks');
+
+
+});
+route.post('/addmarks', (req, res) => {
+
+
+    try{
+        if (
+            !req.body.rollno ||   
+            !req.body.subject1 ||
+            !req.body.subject2 ||
+            !req.body.subject3 ||
+            !req.body.subject4 ||
+            !req.body.subject5 
+          ) {
+            return res.status(422).json({ err: "Please Enter in All the required field" });
+          }
+        console.log(req.body);
+            let newResult = new Result({
+                rollno: req.body.rollno,
+                marks1: req.body.subject1,
+                marks2: req.body.subject2,
+                marks3:req.body.subject3,
+                marks4:req.body.subject4,
+                marks5:req.body.subject5
+            });
+           
+            
+           
+            
+            newResult.save();
+            res.status(200).render("adminhome");
+    
+        }catch(error){
+            res.status(400).send("Invalid");
+        }
+        
+    });
+
+
+
+
+
 route.get('/deletestudent', async (req, res) => {
 
 
@@ -77,10 +141,10 @@ route.get('/deletestudent', async (req, res) => {
 });
 
 route.post('/deletestudent', (req, res) => {
-    const id=req.body.value;
-    
+    const id=req.body.val[0];
+    console.log(id);
     User.findByIdAndRemove(id, function (err) {
-        if (err) return next(err);
+        
         res.send('Deleted successfully!');
     })
 });
