@@ -11,6 +11,7 @@ var bcrypt = require("bcrypt");
 
 
 var User = require("../models/student");
+const { render } = require('ejs');
 
 route.use(passport.initialize());
 route.use(passport.session());
