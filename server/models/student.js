@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 const Schema = require('mongoose').Schema;
-const passportLocalMongoose = require("passport-local-mongoose");
+
 const jwt = require("jsonwebtoken");
 const studentSchema = mongoose.Schema({
     name:{
@@ -41,11 +41,13 @@ const studentSchema = mongoose.Schema({
     branch:{
         type:String,
     },
-    tokens:[{
-        token:{
-            type:String,
-        }
-    }]
+   tokens:[{
+       token:{
+           type:String
+       }
+   }]
+    
+    
 //     sem: { type: Schema.Types.ObjectId, ref: "semester" },
 //   branch: { type: Schema.Types.ObjectId, ref: "branch"}
 })
@@ -56,9 +58,10 @@ studentSchema.methods.generateAuthToken = async function(){
         await this.save();
         return token;
     }catch(error){
+        console.log(error);
         res.send("the error part"+error);
     }
 }
 
-studentSchema.plugin(passportLocalMongoose);
+
 module.exports = mongoose.model('student',studentSchema)

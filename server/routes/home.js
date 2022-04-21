@@ -5,28 +5,16 @@ const route = express.Router()
 const cookieParser = require("cookie-parser");
 var passport = require("passport");
 const decodeCookie = require("jwt-decode");
-var LocalStrategy = require("passport-local");
+
 route.use(cookieParser()); 
-route.use(require("express-session")({
-    secret: "node js mongodb",
-    resave: false,
-    saveUninitialized: false
-    }));
-var passportLocalMongoose = require("passport-local-mongoose");
 var bcrypt = require("bcrypt");
 
 
 var User = require("../models/student");
-route.use(require("express-session")({
-secret: "node js mongodb",
-resave: false,
-saveUninitialized: false
-}));
+
 route.use(passport.initialize());
 route.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+
 route.get('/', (req, res) => {
     
     res.render('Home');  
