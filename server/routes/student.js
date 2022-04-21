@@ -67,6 +67,17 @@ route.get('/studentprofile', async (req, res) => {
 
 
 });
+route.get('/managestudent', async (req, res) => {
+
+    var decoded =decodeCookie(req.cookies.srms);
+    console.log(decoded._id);
+    //console.log(decoded._id);
+    const user = await User.find({});
+    res.render('managestudent',{user});
+
+
+});
+
 
 
 route.get('/signup', (req, res) => {

@@ -53,38 +53,37 @@
              
               <p></p>
               <td><label>Name </label></td>
-              <td><%- user.name %>  </td>
+              <td><input type="text" name="fatherName" value='<%- user.name %>'> </td>
             </tr>
-            <tr>
-              <td><label>Father's Name </label></td>
-              <td><input type="text" name="fatherName" placeholder="Enter your father's name"> <br></td>
-            </tr>
+            
 
             <tr>
               <td><label>Roll Number</label></td>
-              <td><input type="number" name="rollNo" readonly placeholder="Enter your roll number"> <br></td>
+              <td><input type="number" name="rollNo" value='<%- user.rollno %>'> <br></td>
             </tr>
 
             <tr>
               <td><label>Email</label></td>
-              <td><input type="email" name="email" readonly placeholder="Enter your Emil ID "> <br></td>
+              <td><input type="email" name="email" value='<%- user.email %>'> <br></td>
             </tr>
             
-  
 
             <tr>
-              <td><label>Gender</label></td>
-              <td>
-                <input type="radio" name="gender"> Male
-                <input type="radio" name="gender"> Female
-                <input type="radio" name="gender"> Other
-              </td>
-
+              <td><label>Gender  </label></td>
+              <td><input type="text" name="gender" value='<%- user.gender %>'> <br></td>
             </tr>
-
             <tr>
-              <td><label>Phone number  </label></td>
-              <td><input type="number" name="phoneNumber" placeholder="Enter your phone number"> <br></td>
+              <td><label>Phone  </label></td>
+              <td><input type="number" name="phoneNumber" value='<%- user.phone %>'> <br></td>
+            </tr>
+          
+            <tr>
+              <td><label>Branch  </label></td>
+              <td><input type="text" name="branch" value='<%- user.branch %>'> <br></td>
+            </tr>
+            <tr>
+              <td><label>Semester </label></td>
+              <td><input type="text" name="sem" value='<%- user.sem %>'> <br></td>
             </tr>
 
 

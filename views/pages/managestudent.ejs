@@ -223,17 +223,16 @@ small {
  <form class="" action="/student/managestudent" method="post">
     <div id="div1">
       <table border="1px" align="center">
+        <% for(var i = 0;i < user.length ; i++) {%>
         <tr>
-
-          <td> Institute Name </td>
+          
+          <td> Name </td>
           
           <td> Course Name </td>
           
           <td> Roll No. </td>
-          
-          <td>Name </td>
-          
-          <td>Father Name </td>
+          <td> phone</td>
+          <td> email</td>
           
           <td>Gender </td>
           <td>Edit </td>
@@ -241,7 +240,7 @@ small {
           <td>View Result</td>
         </tr>
         <tr>
-          <td> <strong>DAIICT</strong></td>
+          <td> <strong><%= user[i].name %></strong></td>
           <td><strong> Msc IT</strong></td>
           <td><strong> 202112044 </strong></td>
           <td><strong>John Doe</strong></td>
@@ -251,6 +250,7 @@ small {
           <td><button class="btn btn-block btn-primary btn-lg"><i class="fas fa-trash pr-1"></i></button></td>
           <td><button class="btn btn-block btn-primary btn-lg">View Result</button></td>
         </tr>
+        <% } %>
     </table>
   </div>
 </form>
