@@ -1,10 +1,9 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<title>Result Management System</title>
-	<!-- <link rel="stylesheet" type="text/css" href="login.css"> -->
-	<style>
-	body {
+    <title>Login Page</title>
+<!-- <link rel="stylesheet" type="text/css" href="login.css"> -->
+<style>
+    body {
     background-color: #19123B
 }
 
@@ -183,68 +182,15 @@ small {
     }
 }
 </style>
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
-	<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-
-	<style media="screen">
-		body{
-			font-family:sans-serif;
-			background-color: #19123B;
-			color:#fff;
-		}
-
-		td{
-			padding:10px;
-		}
-
-		li {
-			display: inline;
-		}
-
-		th{
-			padding: 95px;
-			padding-bottom: 0;
-			font-size:20px;
-		}
-
-		td{
-			align-content: center;
-			padding: 95px;
-			padding-top: 5px;
-			font-size:12px;
-		}
-
-		button{
-			width: 120px;
-			height:40px;
-			border-color: #fff;
-			border-radius:15px;
-			background-color: #bffff0	;		
-			font-weight: bold;
-			
-		}
-
-		#main{
-			display: flex;
-		}
-
-		#box2{
-			position: absolute;
-			left:35%;
-		}
-		img{
-			border-radius: 50px;
-		}
-	</style>
-
-
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 </head>
-<body>
-	<div class="myDiv">
+<body style=" background-color: #19123B">
+ <div class="myDiv">
      <div class="box1">
-         <img src="dahome1.jpeg" style="border-radius: 50%" height="100px" width="100px">
+         <img src="../public/img/dahome.jpeg" style="border-radius: 50%" height="100px" width="100px">
      </div>
      <div class="box2">
          <h2 class="mt-5" style="margin-left: 33%">Result Management System</h2>
@@ -253,47 +199,33 @@ small {
          <div class="form-group mt-3"> <button type="button" class="btn btn-block btn-primary btn-lg"><small><i class="far fa-user pr-2"></i>Home</small></button> </div>
      </div>
  </div>
+    
 
-	<div class="container" style="margin-top: -10%; ">
-		<div class="row d-flex justify-content-center">
-			<div class="col-12 col-md-8 col-lg-6 col-xl-12">
-				<div class="card py-3 px-2">
-					<div class="division">
-						<div class="row">
-							<div class="col-3">
-								<div class="line l"></div>
-							</div>
-							<div class="col-6"><h5>Welcome to DAIICT</h5></div>
-							<div class="col-3">
-								<div class="line r"></div>
-							</div>
-						</div>
-					</div>
-					<div>
-						<table align="center">
-							<tr>
-								<th>Address</th>
-								<th>Contact Number</th>
-								<th>Email Address</th>
-							</tr>
-				
-							<tr>
-								<td>Reliance Cross Rd, Gandhinagar, Gujarat</td>
-								<td>+(91) 8899889988</td>
-								<td>DAIICT@gmail.com</td>
-							</tr>
-				
-							<tr>
-								<td align="center" colspan="3">
-										<Button onclick="window.location.href='/login'">LogIn</Button>
-										<!--<div class="form-group mt-3"> <button type="button" class="btn btn-block btn-primary btn-lg"><small><i class="far fa-user pr-2"></i>Login</small></button> </div>
-								</td>
-						</tr>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="container">
+    <div class="row d-flex justify-content-center mt-5">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card py-3 px-2">
+                <div class="division">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="line l"></div>
+                        </div>
+                        <div class="col-6"><span>Admin Login</span></div>
+                        <div class="col-3">
+                            <div class="line r"></div>
+                        </div>
+                    </div>
+                </div>
+                <form class="myform" action="/student/login" method="post">
+                    <div class="form-group"> <input type="username" id="username" name= "email" class="form-control" placeholder="Username"> </div>
+                    <div class="form-group"> <input type="password" id="password" name="password" class="form-control" placeholder="Password"> </div>
+                    
+                    <div class="form-group mt-3"> <button class="btn btn-block btn-primary btn-lg"><small><i class="far fa-user pr-2"></i>Login</small></button> </div>
+                    <div><p><a href="/adminhome">Not Student?</a></p></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

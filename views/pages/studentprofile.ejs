@@ -47,11 +47,13 @@
 
     <div id="main">
       <center>
-        <form  class="" action="/student/studentprofile" method="post">
+        <form action="/student/studentprofile" method="get">
           <table>
             <tr>
+             
+              <p></p>
               <td><label>Name </label></td>
-              <td><input type="text" name="name" value="" id="name" placeholder="Enter your name"> </td>
+              <td><%- user.name %>  </td>
             </tr>
             <tr>
               <td><label>Father's Name </label></td>
@@ -87,7 +89,7 @@
 
 
             <tr>
-              <td align="center" colspan="2"><button onclick="showCookies()" type="submit" name="button">Submit</button></td>
+              <td align="center" colspan="2"><button onclick="validate" type="submit" name="button">Submit</button></td>
             </tr>
           </table>
 
@@ -97,8 +99,7 @@
     </div>
   </body>
   <script>
-$( document ).ready(function() {
-  document.getElementById("name").innerHTML=document.cookie;
-})
+    
+
   </script>
 </html>

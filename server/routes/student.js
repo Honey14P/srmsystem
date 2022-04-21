@@ -23,6 +23,7 @@ const { RESOURCES_INITIALIZE } = require('admin-bro');
 const { cookie } = require('express-validator');
 const { application } = require('express');
 const cons = require('consolidate');
+const { default: mongoose } = require('mongoose');
 route.use(require("express-session")({
 secret: "node js mongodb",
 resave: false,
@@ -56,15 +57,18 @@ route.get('/studenthome', (req, res) => {
     res.render('studenthome');  
     
 });
-route.get('/studentprofile', (req, res) => {
+route.get('/studentprofile', async (req, res) => {
     console.log(`this is cookies ${req.cookies.srms}`);
     var decoded =decodeCookie(req.cookies.srms);
     console.log(decoded._id);
     //console.log(decoded._id);
-    res.render('studentprofile',{decoded});
+    const user = await User.findById(decoded._id);
+    res.render('studentprofile',{user});
 
 
 });
+
+
 route.get('/signup', (req, res) => {
     
     res.render('signup');  
@@ -91,7 +95,12 @@ route.post('/login', async(req, res) => {
         const email=req.body.email;
         const password=req.body.password;
         const useremail = await User.findOne({email:email});
-        
+
+        if(email==="admin" && password==="admin")
+        {
+            res.render('adminhome');
+        }
+        else{
         //console.log(`${email} ${password}`)
         if(useremail.password===password){
             const token = await useremail.generateAuthToken();
@@ -104,6 +113,7 @@ route.post('/login', async(req, res) => {
         }else{
             res.send("Check Credentials");
         }
+    }
        //res.send(useremail);
         //console.log(useremail);
 
