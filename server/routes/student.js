@@ -174,7 +174,7 @@ route.post('/login', async(req, res) => {
         const password=req.body.password;
         const useremail = await User.findOne({email:email});
 
-        if(email==="admin" && password==="admin")
+        if(email==="admin123@gmail.com" && password==="admin")
         {
             res.render('adminhome');
         }
