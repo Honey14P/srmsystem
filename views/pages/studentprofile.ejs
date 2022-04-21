@@ -51,9 +51,8 @@
           <table>
             <tr>
               <td><label>Name </label></td>
-              <td><input type="text" name="name" placeholder="Enter your name"> </td>
+              <td><input type="text" name="name" value="" id="name" placeholder="Enter your name"> </td>
             </tr>
-
             <tr>
               <td><label>Father's Name </label></td>
               <td><input type="text" name="fatherName" placeholder="Enter your father's name"> <br></td>
@@ -61,14 +60,15 @@
 
             <tr>
               <td><label>Roll Number</label></td>
-              <td><input type="number" name="roolNo" readonly placeholder="Enter your roll number"> <br></td>
+              <td><input type="number" name="rollNo" readonly placeholder="Enter your roll number"> <br></td>
             </tr>
 
             <tr>
               <td><label>Email</label></td>
               <td><input type="email" name="email" readonly placeholder="Enter your Emil ID "> <br></td>
             </tr>
-
+            
+  
 
             <tr>
               <td><label>Gender</label></td>
@@ -87,7 +87,7 @@
 
 
             <tr>
-              <td align="center" colspan="2"><button type="submit" name="button">Submit</button></td>
+              <td align="center" colspan="2"><button onclick="showCookies()" type="submit" name="button">Submit</button></td>
             </tr>
           </table>
 
@@ -96,4 +96,9 @@
       </center>
     </div>
   </body>
+  <script>
+$( document ).ready(function() {
+  document.getElementById("name").innerHTML=document.cookie;
+})
+  </script>
 </html>

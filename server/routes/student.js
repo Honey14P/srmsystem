@@ -6,6 +6,7 @@ var passport = require("passport");
 const cookieParser = require("cookie-parser");
 const decodeCookie = require("jwt-decode");
 var LocalStrategy = require("passport-local");
+var localStorage=require("node-localstorage").LocalStorage;
 route.use(cookieParser()); 
 
 route.use(require("express-session")({
@@ -21,6 +22,7 @@ var User = require("../models/student");
 const { RESOURCES_INITIALIZE } = require('admin-bro');
 const { cookie } = require('express-validator');
 const { application } = require('express');
+const cons = require('consolidate');
 route.use(require("express-session")({
 secret: "node js mongodb",
 resave: false,
@@ -49,6 +51,8 @@ route.get('/adminhome', (req, res) => {
 
 });
 route.get('/studenthome', (req, res) => {
+    
+    
     res.render('studenthome');  
     
 });
@@ -56,7 +60,9 @@ route.get('/studentprofile', (req, res) => {
     console.log(`this is cookies ${req.cookies.srms}`);
     var decoded =decodeCookie(req.cookies.srms);
     console.log(decoded._id);
-    res.render('studentprofile');  
+    //console.log(decoded._id);
+    res.render('studentprofile',{decoded});
+
 
 });
 route.get('/signup', (req, res) => {
