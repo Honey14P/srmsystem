@@ -17,54 +17,54 @@ router.get('/adminlogin', (req, res) => {
 
 });
 
-router.get('/admin/managestudent', (req, res) => {
+// router.get('/admin/managestudent', (req, res) => {
     
-    res.render('managestudent');  
+//     res.render('managestudent');  
 
-});
-router.get('/admin/managestudent/addnewstudent', (req, res) => {
+// });
+// // router.get('/admin/managestudent/addnewstudent', (req, res) => {
     
-    res.render('addnewstudent');  
+//     res.render('addnewstudent');  
 
-});
-router.get('/admin/managestudent/addnewstudent', (req, res)=>{
+// });
+// router.get('/admin/managestudent/addnewstudent', (req, res)=>{
 
-    if(req.query.id){
-        const id = req.query.id;
+//     if(req.query.id){
+//         const id = req.query.id;
 
-        User.findById(id)
-            .then(data =>{
-                if(!data){
-                    res.status(404).send({ message : "Not found user with id "+ id})
-                }else{
+//         User.findById(id)
+//             .then(data =>{
+//                 if(!data){
+//                     res.status(404).send({ message : "Not found user with id "+ id})
+//                 }else{
                     
-                    res.send(data)
-                }
-            })
-            .catch(err =>{
-                res.status(500).send({ message: "Erro retrieving user with id " + id})
-            })
+//                     res.send(data)
+//                 }
+//             })
+//             .catch(err =>{
+//                 res.status(500).send({ message: "Erro retrieving user with id " + id})
+//             })
 
-    }else{
-        User.find()
-            .then(newUser => {
+//     }else{
+//         User.find()
+//             .then(newUser => {
                
-      res.render('managestudent', { posts: newUser });
-            })
-            .catch(err => {
-                res.status(500).send({ message : err.message || "Error Occurred while retriving user information" })
-            })
-    }
+//       res.render('managestudent', { posts: newUser });
+//             })
+//             .catch(err => {
+//                 res.status(500).send({ message : err.message || "Error Occurred while retriving user information" })
+//             })
+//     }
 
     
-});
-router.delete('/admin/managestudent/delete/id', function (req, res) {
-    Student.findByIdAndRemove(req.params.id, function (err) {
-        if (err) return next(err);
-        res.send('Deleted successfully!');
-    })
+// });
+// router.delete('/admin/managestudent/delete/id', function (req, res) {
+//     Student.findByIdAndRemove(req.params.id, function (err) {
+//         if (err) return next(err);
+//         res.send('Deleted successfully!');
+//     })
     
-});
+// });
 
 // router.get('admin/semester', semester_controller.semester);
 // router.get('admin/', semester_controller.semester);

@@ -20,6 +20,7 @@ const { cookie } = require('express-validator');
 const { application } = require('express');
 const cons = require('consolidate');
 const { default: mongoose } = require('mongoose');
+const router = require('./admin');
 
 route.use(passport.initialize());
 route.use(passport.session());
@@ -56,6 +57,83 @@ route.get('/studentprofile', async (req, res) => {
 
 
 });
+route.get('/addnewstudent',(req, res) =>
+{
+  res.render('addnewstudent')
+});
+route.get('/managestudent', async (req, res) => {  
+    const user =  await User.find({});
+    res.render('managestudent',{user});
+
+
+});
+route.get('/deletestudent/:id', function(req, res, next) {
+    User.findByIdAndRemove(req.params.id, (err, doc) => {
+        if (!err) {
+            res.redirect('/admin/adminhome');
+        } else {
+            console.log('Failed to Delete user Details: ' + err);
+        }
+    });
+});
+
+route.get('/updateprofile/(:id)',  async function(req, res) {
+    const user3 = await User.findById(req.params.id);
+    res.render('updateprofile',{user3});
+})
+route.post('/updateprofile/(:id)',  function(req, res) {
+    User.findByIdAndUpdate(req.params.id, {$set: req.body}, function () {
+
+        res.render('adminhome');
+    });
+})
+
+route.post('/addnewstudent',(req, res) =>
+{
+    try{
+        if (
+            !req.body.name ||   
+            !req.body.email ||
+            !req.body.rollno ||
+            !req.body.gender ||
+            !req.body.phone ||
+            !req.body.branch ||
+            !req.body.password ||
+            !req.body.sem
+          ) 
+            
+                res.json({
+                  status:404,
+                  message:"Your feedback successfully saved."
+                });
+        
+            
+          
+        console.log(req.body);
+            let newUser = new User({
+                name: req.body.name,
+                email: req.body.email,
+                rollno: req.body.rollno,
+                gender:req.body.gender,
+                phone:req.body.phone,
+                branch:req.body.branch,
+                password:req.body.password,
+                sem:req.body.sem
+            });
+           
+            
+           
+            
+            newUser.save();
+            res.status(200).render("adminhome");
+    
+        }catch(error){
+            res.status(400).send("Invalid");
+        }
+    
+});
+
+
 route.get('/viewmarks', async (req, res) => {
     console.log(`this is cookies ${req.cookies.srms}`);
     var decoded =decodeCookie(req.cookies.srms);
@@ -69,16 +147,7 @@ route.get('/viewmarks', async (req, res) => {
 
 
 });
-route.get('/managestudent', async (req, res) => {
 
-
-    
-    //console.log(decoded._id);
-    const user =  await User.find({});
-    res.render('managestudent',{user});
-
-
-});
 route.get('/addmarks', (req, res) => {
 
 
@@ -129,25 +198,9 @@ route.post('/addmarks', (req, res) => {
 
 
 
-route.get('/deletestudent', async (req, res) => {
 
 
-    
-    //console.log(decoded._id);
-    const user =  await User.find({});
-    res.render('deletestudent',{user});
 
-
-});
-
-route.post('/deletestudent', (req, res) => {
-    const id=req.body.val[0];
-    console.log(id);
-    User.findByIdAndRemove(id, function (err) {
-        
-        res.send('Deleted successfully!');
-    })
-});
 
 
 

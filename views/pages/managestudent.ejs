@@ -13,7 +13,7 @@
          		        </div>
       </div>
 <div class="container" id="container">
-		<form action="#">
+		<form method="get" action="/student/managestudent">
 			<br>
 			<h1>Manage Students</h1>
 
@@ -37,7 +37,7 @@
           <td>Delete </td>
           <td>View Result</td>
         </tr>
-        <% for(var i = 0;i < user.length ; i++) {%>
+        <% for(var i = 0 ; i < user.length ; i++) {%>
         <tr>
            
           <td> <strong>DAIICT</strong></td>
@@ -46,8 +46,8 @@
           <td><strong><%= user[i].name %></strong></td>
           <td><strong> <%= user[i].gender %></strong></td>
           <td><strong>Male</strong></td>
-          <td><button class="btn btn-block btn-primary btn-lg">Edit<i class="fas fa-pencil-alt pr-1"></i></button></td>
-          <td><button class="btn btn-block btn-primary btn-lg">View Result</button></td>
+          <td><a href="updateprofile/<%= user[i].id%>">Update</a></td>
+          <td><a href="deletestudent/<%= user[i].id%>">Delete</a></td>
          
         </tr>
         <% } %>
@@ -58,7 +58,7 @@
 
 	
 </div>
-<button style="margin-top: 3%"><a style="color: white" href="studenthomenew.html"> Home</a></button>
+<button style="margin-top: 3%"><a style="color: white" href="adminhome"> Home</a></button>
 </body>
 <script>
 	

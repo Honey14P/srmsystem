@@ -1,104 +1,63 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <style media="screen">
-      body{
-  			font-family:sans-serif;
-  			background: rgb(191,255,240);
-        background: linear-gradient(90deg, rgba(191,255,240,1) 0%, rgba(240,255,194,1) 35%, rgba(255,228,192,1) 100%);
-  		}
+<html>
+<head>
+	<title>Add new Student</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../.././css/addnewstudentnew.css">
+<body>
+	<img src="../.././img/dahome.jpeg" style="border-radius: 48%; margin-right: 85%; margin-top: 5%">
+	<div class="content">
+        <div class="info">
+         	<h2 style="margin-top: -10%">Student Result MAnagement System</h2>
+         	
+        </div>
+      </div>
+<div class="container" id="container">
+		<form action="/student/addnewstudent" method="post">
+			<br>
+            
+			<h1>Add new Student</h1>
+			<br>
+			<input type="text" name="name" placeholder="Name" />
+			<input type="text" name="rollno" placeholder="Roll No." />
+			<input type="email" name="email" placeholder="Email" />
+			<input type="password" name="password" placeholder="Password" />
 
-      td{
-        padding:10px;
-      }
+               <div class="form-group"> 
+                        <label>Gender&emsp;&emsp;</label>
+                        <select name="gender" style="border-radius: 5px;color: gray;">
+                        <option selected value="male">Male</option>
+                        <option value="semale">Female</option>
+                        </select>
+                    </div>
+                    <br>
+           				<div class="form-group"> 
+                        <label>Select Branch&emsp;&emsp;</label>
+                        <select name="branch" style="border-radius: 5px;color: gray;">
+                        <option selected value="mscit">MSc.IT</option>
+                        <option value="btech">B.Tech</option>
+                        <option value="mtech">M.Tech</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div> 
+                        <label>Select Semester &emsp;&emsp;</label>
+                        <select name="sem" style="border-radius: 5px;color: gray;">
+                        <option selected value="1">I</option>
+                        <option value="2">II</option>
+                        <option value="3">III</option>
+                        <option value="4">IV</option>
+                        </select>
+                    </div>
+			<input type="phone" name="phone" placeholder="Phone no" />
+			<button>Add</button>
+		</form>
 
-      input{
-        border-radius: 5px;
-      }
-
-      button{
-  			width: 80px;
-  			height:30px;
-  			border-radius:10px;
-  			background-color: #f0ffc2;
-  		}
-
-    </style>
-  </head>
-  <body background="12.jpg">
-    <div id="header">
-      <h1 align="center">Add New Student</h1>
-    </div>
-    <br><br>
-
-    <div id="main">
-      <center>
-        <form  class="" action="index.html" method="post">
-          <table>
-            <tr>
-              <td><label>Name </label></td>
-              <td><input type="text" name="name" placeholder="Enter your name"> </td>
-            </tr>
-
-            <tr>
-              <td><label>Father's Name </label></td>
-              <td><input type="text" name="fatherName" placeholder="Enter your father's name"> <br></td>
-            </tr>
-
-            <tr>
-              <td><label>Roll Number</label></td>
-              <td><input type="number" name="roolNo" placeholder="Enter your roll number"> <br></td>
-            </tr>
-
-            <tr>
-              <td><label>Email</label></td>
-              <td><input type="email" name="email" placeholder="Enter your Emil ID "> <br></td>
-            </tr>
+	
+</div>
 
 
-            <tr>
-              <td><label>Gender</label></td>
-              <td>
-                <input type="radio" name="gender"> Male
-                <input type="radio" name="gender"> Female
-                <input type="radio" name="gender"> Other
-              </td>
-
-            </tr>
-
-            <tr>
-              <td><label>Phone number  </label></td>
-              <td><input type="number" name="phoneNumber" placeholder="Enter your phone number"> <br></td>
-            </tr>
-            <tr>
-              <td><label>Select Branch</label></td>
-              <td><select>
-                 <option selected value="mscit">MSc.IT</option>
-                 <option value="btech">B.Tech</option>
-                 <option value="mtech">M.Tech</option>
-              </select> <br></td>
-            </tr>
-            <tr>
-              <td><label>Select Semester</label></td>
-              <td><select>
-                 <option selected value="one">I</option>
-                 <option value="two">II</option>
-                 <option value="three">III</option>
-                 <option value="four">IV</option>
-                 
-              </select> <br></td>
-
-
-            <tr>
-              <td align="center" colspan="2"><button type="submit" name="button">Submit</button></td>
-            </tr>
-          </table>
-
-
-        </form>
-      </center>
-    </div>
-  </body>
+</body>
+<script>
+	
+</script>
 </html>

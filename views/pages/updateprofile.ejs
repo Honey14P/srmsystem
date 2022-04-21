@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title>Add new Student</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../.././css/studentprofilenew.css">
+<body>
+	<img src="../.././img/dahome.jpeg" style="border-radius: 48%; margin-right: 85%; margin-top: 5%">
+	<div class="content">
+        <div class="info">
+         	<h2 style="margin-top: -10%">Student Result Management System</h2>
+         	
+        </div>
+      </div>
+	  
+<div class="container" id="container">
+		<form action="/student/updateprofile/<%= user.id%>" method="post">
+			<br>
+			<h1>Student Profile</h1>
+			<br>
+			<input type="text" name="name" required placeholder="Name"  value='<%=user.name %>'/>
+			<input type="text" name="roll" required placeholder="Roll No." value='<%- user.rollno %>' />
+			<input type="email" name="email" required placeholder="Email" value='<%- user.email %>'/>
+			<input type="text" name="branch" required placeholder="branch" value='<%- user.branch %>'/>
+			<input type="text" name="gender" required placeholder="Gender" value='<%- user.gender %>' />
+			<input type="text" name="sem" required placeholder="sem" value='<%- user.sem %>'/>
+			<input type="text" name="phone" required placeholder="phone" value='<%- user.phone %>' />
+			<button style="margin-top: 3%" > Update Profile</button>
+		<!-- </form> -->
+</div>
+
+
+</body>
+<script>
+	
+</script>
+</html>
