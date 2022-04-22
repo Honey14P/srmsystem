@@ -15,6 +15,7 @@ var bcrypt = require("bcrypt");
 
 var User = require("../models/student");
 var Result =require("../models/result");
+var announce=require("../models/announcement");
 
 const { cookie } = require('express-validator');
 const { application } = require('express');
@@ -64,6 +65,12 @@ route.get('/addnewstudent',(req, res) =>
 route.get('/managestudent', async (req, res) => {  
     const user =  await User.find({});
     res.render('managestudent',{user});
+
+
+});
+route.get('/announcement', async (req, res) => {  
+    const an =  await announce.find({});
+    res.render('announcement',{an});
 
 
 });
@@ -255,7 +262,11 @@ route.post('/login', async(req, res) => {
 });
 
 
+route.get("/logout", (req, res) => {
+    
+      res.redirect("/student/login");
 
+  });
 
 route.post('/signup', (req, res) => {
     try{
