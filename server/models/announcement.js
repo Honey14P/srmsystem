@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 
 const announceSchema = new Schema({
   name: { type: String, },
-  link: { type: String, },
+  link: { type: String, }
   
  
 });
 
-const announce = mongoose.model("announcement", announceSchema );
-module.exports = announce;
+const announcement = mongoose.model("announcement", announceSchema );
+module.exports = announcement;
