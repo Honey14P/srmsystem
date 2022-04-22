@@ -115,7 +115,7 @@ route.post('/addannouncement', (req, res) => {
 route.get('/deletestudent/:id', function(req, res, next) {
     User.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err) {
-            res.redirect('/admin/adminhome');
+            res.redirect('/student/managestudent');
         } else {
             console.log('Failed to Delete user Details: ' + err);
         }
@@ -129,7 +129,7 @@ route.get('/updateprofile/(:id)',  async function(req, res) {
 route.post('/updateprofile/(:id)',  function(req, res) {
     User.findByIdAndUpdate(req.params.id, {$set: req.body}, function () {
 
-        res.render('adminhome');
+        res.redirect('/student/managestudent');
     });
 })
 

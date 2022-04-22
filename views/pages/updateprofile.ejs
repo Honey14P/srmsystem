@@ -13,17 +13,17 @@
       </div>
 	  
 <div class="container" id="container">
-		<form action="/student/updateprofile/<%= user.id%>" method="post">
+		<form action="/student/updateprofile/<%= user3.id%>" method="post">
 			<br>
 			<h1>Student Profile</h1>
 			<br>
-			<input type="text" name="name" required placeholder="Name"  value='<%=user.name %>'/>
-			<input type="text" name="roll" required placeholder="Roll No." value='<%- user.rollno %>' />
-			<input type="email" name="email" required placeholder="Email" value='<%- user.email %>'/>
-			<input type="text" name="branch" required placeholder="branch" value='<%- user.branch %>'/>
-			<input type="text" name="gender" required placeholder="Gender" value='<%- user.gender %>' />
-			<input type="text" name="sem" required placeholder="sem" value='<%- user.sem %>'/>
-			<input type="text" name="phone" required placeholder="phone" value='<%- user.phone %>' />
+			<input type="text" name="name" required placeholder="Name"  value='<%=user3.name %>'/>
+			<input type="text" name="roll" required placeholder="Roll No." value='<%- user3.rollno %>' />
+			<input type="email" name="email" required placeholder="Email" value='<%- user3.email %>'/>
+			<input type="text" name="branch" required placeholder="branch" value='<%- user3.branch %>'/>
+			<input type="text" name="gender" required placeholder="Gender" value='<%- user3.gender %>' />
+			<input type="text" name="sem" required placeholder="sem" value='<%- user3.sem %>'/>
+			<input type="text" name="phone" required placeholder="phone" value='<%- user3.phone %>' />
 			<button style="margin-top: 3%" > Update Profile</button>
 		<!-- </form> -->
 </div>
