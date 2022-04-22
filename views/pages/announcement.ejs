@@ -17,9 +17,11 @@
 			<br>
             
 			<h1 style="margin-top: -10%">Announcements</h1>
-
+            <% for(var i = 0 ; i < an.length ; i++) {%>
 			<br>
-			<label style="margin-top: 10%"><a href="#"><p><%- an.name %></p></a></label>
+            <label style="margin-top: 10%"><p><%= an[i].name %></p></label>
+			<label ><a href='<%= an[i].link %>'><p>Click here</p></a></label>
+            <% } %>
             </form>
 
 	
@@ -28,7 +30,7 @@
 	
 </div>
 
-<button style="margin-top: 3%"><a style="color: white" href="studenthomenew.html"> Home</a></button>
+<button style="margin-top: 3%"><a style="color: white" href="studenthome"> Home</a></button>
 </body>
 <script>
 	
