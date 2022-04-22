@@ -57,7 +57,8 @@ route.get('/studentprofile', async (req, res) => {
     console.log(decoded._id);
     //console.log(decoded._id);
     const user = await User.findById(decoded._id);
-    res.render('studentprofile',{user,message:null});
+    console.log(user)
+    res.render('studentprofile',{user:user,message:null});
 
 
 });
@@ -66,10 +67,11 @@ route.post('/studentprofile', async (req, res) => {
     var decoded =decodeCookie(req.cookies.srms);
     console.log(decoded._id);
     //console.log(decoded._id);
+    const user = await User.findById(decoded._id);
     User.findByIdAndUpdate(decoded._id, {$set: req.body}, function () {
     
         
-        res.render('studentprofile',{message:"Profile Updated"});
+        res.render('studentprofile',{user:user,message:"Profile Updated"});
     
         
     });
