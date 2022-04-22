@@ -16,11 +16,13 @@
             <form action="/student/announcement" method="get" >
 			<br>
             
-			<h1 style="margin-top: -10%">Announcements</h1>
+			<h1 style="margin-top: -20%">Announcements</h1>
+            </br>
+    
             <% for(var i = 0 ; i < an.length ; i++) {%>
-			<br>
-            <label style="margin-top: 10%"><p><%= an[i].name %></p></label>
-			<label ><a href='<%= an[i].link %>'><p>Click here</p></a></label>
+		
+            <li><%= an[i].name %><a href='<%= an[i].link %>'>&nbspClick here</a></li>
+			<label ></label>
             <% } %>
             </form>
 
