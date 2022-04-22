@@ -61,6 +61,18 @@ route.get('/studentprofile', async (req, res) => {
 
 
 });
+route.post('/studentprofile', async (req, res) => {
+    console.log(`this is cookies ${req.cookies.srms}`);
+    var decoded =decodeCookie(req.cookies.srms);
+    console.log(decoded._id);
+    //console.log(decoded._id);
+    User.findByIdAndUpdate(decoded._id, {$set: req.body}, function () {
+
+        res.redirect('/studenthome');
+    });
+
+
+});
 route.get('/addnewstudent',(req, res) =>
 {
   res.render('addnewstudent')
