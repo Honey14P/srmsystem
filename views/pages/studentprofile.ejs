@@ -13,21 +13,23 @@
         </div>
 		
       </div>
-	  
+	  <% if(message)  { %>
+		<p><%= message %></p>
+	<% } %>
 <div class="container" id="container">
 	
-		<form action="/student/studentprofile" method="get">
+		<form action="/student/studentprofile" method="post">
 			<br>
 			<h1>Student Profile</h1>
 			<br>
-			<input type="text" name="name" placeholder="Name"  value='<%- user.name %>'/>
-			<input type="text" name="roll" placeholder="Roll No." value='<%- user.rollno %>' />
-			<input type="email" name="email" placeholder="Email" value='<%- user.email %>'/>
-			<input type="text" name="branch" placeholder="branch" value='<%- user.branch %>'/>
-			<input type="text" name="gender" placeholder="Gender" value='<%- user.gender %>' />
-			<input type="text" name="sem" placeholder="sem" value='<%- user.sem %>'/>
+			<input type="text" name="name" placeholder="Name"  required value='<%- user.name %>'/>
+			<input type="text" name="roll" placeholder="Roll No." readonly value='<%- user.rollno %>' />
+			<input type="email" name="email" placeholder="Email" readonly value='<%- user.email %>'/>
+			<input type="text" name="branch" placeholder="branch" readonly value='<%- user.branch %>'/>
+			<input type="text" name="gender" placeholder="Gender"  value='<%- user.gender %>' />
+			<input type="text" name="sem" placeholder="sem" readonly value='<%- user.sem %>'/>
 			<input type="text" name="phone" placeholder="phone" value='<%- user.phone %>' />
-			
+			<button style="margin-top: 3%" > Update Profile</button>
 		</form>
 </div>
 
