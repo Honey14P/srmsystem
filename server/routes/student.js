@@ -45,6 +45,12 @@ route.get('/studenthome', (req, res) => {
     res.render('studenthome');  
     
 });
+route.get('/error',(req, res) => {
+    
+    
+    res.render('error');  
+    
+});
 route.get('/studentprofile', async (req, res) => {
     console.log(`this is cookies ${req.cookies.srms}`);
     var decoded =decodeCookie(req.cookies.srms);
@@ -174,7 +180,8 @@ route.post('/addnewstudent',(req, res) =>
             res.status(200).render("adminhome");
     
         }catch(error){
-            res.status(400).send("Invalid");
+            res.status(400);
+            res.render('addnewstudent');
         }
     
 });
@@ -286,14 +293,15 @@ route.post('/login', async(req, res) => {
         
             res.status(200).render("studenthome");
         }else{
-            res.send("Check Credentials");
+            
+            res.render('error');
         }
     }
        //res.send(useremail);
         //console.log(useremail);
 
     }catch(error){
-        res.status(400).send("Invalid");
+        res.render('error');
     }
 
 });
