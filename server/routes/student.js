@@ -57,7 +57,7 @@ route.get('/studentprofile', async (req, res) => {
     console.log(decoded._id);
     //console.log(decoded._id);
     const user = await User.findById(decoded._id);
-    res.render('studentprofile',{user});
+    res.render('studentprofile',{user,message:null});
 
 
 });
@@ -67,8 +67,11 @@ route.post('/studentprofile', async (req, res) => {
     console.log(decoded._id);
     //console.log(decoded._id);
     User.findByIdAndUpdate(decoded._id, {$set: req.body}, function () {
-
-        res.redirect('/studenthome');
+    
+        
+        res.render('studentprofile',{message:"Profile Updated"});
+    
+        
     });
 
 
