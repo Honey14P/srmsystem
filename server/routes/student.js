@@ -16,6 +16,7 @@ var bcrypt = require("bcrypt");
 var User = require("../models/student");
 var Result =require("../models/result");
 var announcement=require("../models/announcement");
+var subject=require(".././models/subject");
 
 const { cookie } = require('express-validator');
 const { application } = require('express');
@@ -194,38 +195,42 @@ route.get('/viewmarks', async (req, res) => {
 });
 
 route.get('/addmarks/(:id)', async function(req, res) {
+   
     const user3 = await User.findById(req.params.id);
-    res.render('addmarks',{user3});
+    const sem=user3.sem;
+    const branch=user3.branch; 
+    const useremail = await subject.findOne({sem:sem});
+    res.render('addmarks',{user3,useremail});
 });
-route.post('/addmarks/(:id)', (req, res) => {
+route.post('/addmarks/(:id)', async (req, res) => {
 
 
     try{
         if (
             !req.body.rollno ||   
-            !req.body.subject1 ||
-            !req.body.subject2 ||
-            !req.body.subject3 ||
-            !req.body.subject4 ||
-            !req.body.subject5 
+            !req.body.sub1 ||
+            !req.body.sub2 ||
+            !req.body.sub3 ||
+            !req.body.sub4 ||
+            !req.body.sub5 
           ) {
             return res.status(422).json({ err: "Please Enter in All the required field" });
           }
         console.log(req.body);
             let newResult = new Result({
                 rollno: req.body.rollno,
-                marks1: req.body.subject1,
-                marks2: req.body.subject2,
-                marks3:req.body.subject3,
-                marks4:req.body.subject4,
-                marks5:req.body.subject5
+                marks1: req.body.sub1,
+                marks2: req.body.sub2,
+                marks3:req.body.sub3,
+                marks4:req.body.sub4,
+                marks5:req.body.sub5
             });
            
             
-           
-            
-            newResult.save();
+            await newResult.save();
             res.status(200).render("adminhome");
+            
+            
     
         }catch(error){
             res.status(400).send("Invalid");

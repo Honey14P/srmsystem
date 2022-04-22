@@ -1,36 +1,29 @@
 <html>
 <head>
-	<title>Add Announcements</title>
+	<title>Add new Announcement</title>
 </head>
-<link rel="stylesheet" type="text/css" href="../.././css/loginnew.css">
+<link rel="stylesheet" type="text/css" href="../.././css/addnewstudentnew.css">
 <body>
+	<img src="../.././img/dahome.jpeg" style="border-radius: 48%; margin-right: 85%; margin-top: 5%">
 	<div class="content">
-		<div class="info">
-				<h2 style="margin-top: 2%">Student Result MAnagement System</h2>
-		</div>
-	</div>
+        <div class="info">
+         	<h2 style="margin-top: -10%">Student Result MAnagement System</h2>
+         	
+        </div>
+      </div>
 <div class="container" id="container">
-	<div class="form-container sign-up-container">
-		
-	</div>
-	<div class="form-container sign-in-container">
 		<form action="/student/addannouncement" method="post">
-			<h1>addannouncement</h1>
-			
-			<input type="text" name="email" placeholder="Email" />
-			<input type="text" name="password"  placeholder="Password" />
-			<button type="submit">Add</a></button>
+			<br>
+			<h1>Add new Announcement</h1>
+			<br>
+			<input type="text" style="background-color: lightgrey; " name="email" placeholder="title" />
+			<textarea type="text" cols="79" rows="5" style="background-color: lightgrey; border: none" name="password" placeholder="Enter link"></textarea>
+           
+               
+			<button style="margin-top: 10%" onclick="window.location.href='adminhome'">Add</button>
 		</form>
-	</div>
-	<div class="overlay-container">
-		<div class="overlay">
-			
-			<div class="overlay-panel overlay-right">
-				<h1>Welcome</h1>
-				<p>to<br><br>Student Result Management System announcement page</p>
-			</div>
-		</div>
-	</div>
+
+	
 </div>
 
 
