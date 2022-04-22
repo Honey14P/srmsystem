@@ -15,7 +15,7 @@ var bcrypt = require("bcrypt");
 
 var User = require("../models/student");
 var Result =require("../models/result");
-var announce=require("../models/announcement");
+var announcement=require("../models/announcement");
 
 const { cookie } = require('express-validator');
 const { application } = require('express');
@@ -68,9 +68,50 @@ route.get('/managestudent', async (req, res) => {
 
 
 });
-route.get('/announcement', async (req, res) => {  
-    const an =  await announce.find({});
-    res.render('announcement',{an});
+route.get('/addannouncement', async (req, res) => {  
+    // const an =  await announcement.find({});
+    // console.log("ans"+an);
+    res.render('addannouncement');
+
+
+});
+route.get('/announcement',  (req, res) => {  
+    const an =  announcement.find({});
+    console.log("ans"+an);
+    res.render('announcement');
+
+
+});
+
+route.post('/addannouncement', (req, res) => {  
+    // const an =  await announcement.find({});
+    // console.log("ans"+an);
+    try{
+        if (
+            !req.body.email ||   
+            !req.body.password
+           
+          ) {
+            return res.status(422).json({ err: "Please Enter in All the required field" });
+          }
+        
+            let newannouncement = new announcement({
+                name: req.body.email,
+                link: req.body.password,
+                
+            });
+           
+            
+           
+            
+            newannouncement.save();
+            res.status(200).render('addannouncement');
+    
+        }catch(error){
+            res.status(400).send("Invalid");
+        }
+        
+    
 
 
 });
