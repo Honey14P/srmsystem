@@ -3,6 +3,7 @@
 	<title>Add Marks</title>
 </head>
 <link rel="stylesheet" type="text/css" href="../.././css/managestudentsnew.css">
+<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 <body>
 <img src="../.././img/dahome.jpeg" style="border-radius: 48%; margin-right: 85%; margin-top: 5%">
 	
@@ -21,11 +22,11 @@
 			<table border="1px" align="center">
         <tr>
 
-          <td> Institute Name </td>
+          <td> Roll No </td>
           
           <td> Course Name </td>
           
-          <td> Roll No. </td>
+          <td> Email </td>
           
           <td>Name </td>
           
@@ -40,13 +41,14 @@
         <% for(var i = 0 ; i < user.length ; i++) {%>
         <tr>
            
-          <td> <strong>DAIICT</strong></td>
+          <td> <strong><%= user[i].rollno %></strong></td>
           <td><strong> Msc IT</strong></td>
-          <td><strong> <%= user[i].rollno %> </strong></td>
+          <td><strong> <%= user[i].email %> </strong></td>
           <td><strong><%= user[i].name %></strong></td>
           <td><strong> <%= user[i].gender %></strong></td>
-          <td><a href="updateprofile/<%= user[i].id%>">Update</a></td>
-          <td><a href="deletestudent/<%= user[i].id%>">Delete</a></td>
+          <td><a href="updateprofile/<%= user[i].id%>"><i style="color: orangered; margin-left: 20%;" class="fas fa-pencil-alt pr-1"></i></a></td>
+          <td><a href="deletestudent/<%= user[i].id%>"><i style="color: orangered; margin-left: 30%;" class="fas fa-trash pr-1"></i></a></td>
+          <td><a href="addmarks/<%= user[i].id%>"><i style="color: orangered; margin-left: 40%;" class="fas fa-plus pr-1"></i></a></td>
          
         </tr>
         <% } %>

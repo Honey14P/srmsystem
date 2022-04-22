@@ -193,17 +193,11 @@ route.get('/viewmarks', async (req, res) => {
 
 });
 
-route.get('/addmarks', (req, res) => {
-
-
-    
-    //console.log(decoded._id);
-    
-    res.render('addmarks');
-
-
+route.get('/addmarks/(:id)', async function(req, res) {
+    const user3 = await User.findById(req.params.id);
+    res.render('addmarks',{user3});
 });
-route.post('/addmarks', (req, res) => {
+route.post('/addmarks/(:id)', (req, res) => {
 
 
     try{
@@ -301,8 +295,9 @@ route.post('/login', async(req, res) => {
 
 
 route.get("/logout", (req, res) => {
+    res.clearCookie("srms");
     
-      res.redirect("/student/login");
+      res.redirect("/");
 
   });
 
