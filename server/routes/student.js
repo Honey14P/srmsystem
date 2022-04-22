@@ -212,8 +212,10 @@ route.get('/viewmarks', async (req, res) => {
     //console.log(decoded._id);
     const user = await User.findById(decoded._id);
     const roll=user.rollno;
+    const sem=user.sem;
+    const sub=await subject.findOne({sem:sem});
     const userroll = await Result.findOne({rollno:roll});
-    res.render('viewmarks',{userroll,user});
+    res.render('viewmarks',{userroll,user,sub});
 
 
 
@@ -273,11 +275,7 @@ route.post('/addmarks/(:id)', async (req, res) => {
 
 
 
-route.get('/signup', (req, res) => {
-    
-    res.render('signup');  
 
-});
 
 
 route.get('/home', (req, res) => {
