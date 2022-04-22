@@ -32,11 +32,7 @@ route.get('/login', (req, res) => {
     res.render('login');  
 
 });
-route.get('/announcement', (req, res) => {
-    
-    res.render('announcement');  
 
-});
 route.get('/adminhome', (req, res) => {
     
     res.render('adminhome');  
@@ -75,10 +71,11 @@ route.get('/addannouncement', async (req, res) => {
 
 
 });
-route.get('/announcement',  (req, res) => {  
-    const an =  announcement.find({});
-    console.log("ans"+an);
-    res.render('announcement');
+route.get('/announcement', async (req, res) => {
+
+    const an = await announcement.find({});
+    console.log("ans "+ an);
+    res.render('announcement',{an});
 
 
 });

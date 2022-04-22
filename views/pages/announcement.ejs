@@ -4,7 +4,7 @@
 </head>
 <link rel="stylesheet" type="text/css" href="../.././css/announcementnew.css">
 <body>
-<img src="../.././img/dahome1.jpeg" style="border-radius: 48%; margin-right: 85%; margin-top: 5%">
+<img src="../.././img/dahome.jpeg" style="border-radius: 48%; margin-right: 85%; margin-top: 5%">
 	
 	<div class="content" style="margin-top: -10%">
         <div class="info">
@@ -12,16 +12,17 @@
         </div>
     </div>
 <div class="container" id="container">
-		<form action="get" action="/student/announcement">
+		
+            <form action="/student/announcement" method="get" >
 			<br>
             
 			<h1 style="margin-top: -10%">Announcements</h1>
 
 			<br>
-			<label style="margin-top: 10%"><a href="#">Click here</a></label>
-			
+			<label style="margin-top: 10%"><a href="#"><p><%- an.name %></p></a></label>
+            </form>
 
-		</form>
+	
 
 
 	
