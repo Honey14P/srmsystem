@@ -112,7 +112,8 @@ route.post('/addannouncement', (req, res) => {
             res.status(200).render('addannouncement');
     
         }catch(error){
-            res.status(400).send("Invalid");
+           // res.status(400).send("Invalid");
+           <alert>Invalid</alert>
         }
         
     
