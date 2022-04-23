@@ -10,9 +10,6 @@ var LocalStrategy = require("passport-local");
 route.use(cookieParser()); 
 
 
-var bcrypt = require("bcrypt");
-
-
 var User = require("../models/student");
 var Result =require("../models/result");
 var announcement=require("../models/announcement");
@@ -230,16 +227,21 @@ route.post('/addnewstudent',(req, res) =>
 
 
 route.get('/viewmarks', async (req, res) => {
-    console.log(`this is cookies ${req.cookies.srms}`);
     var decoded =decodeCookie(req.cookies.srms);
-    console.log(decoded._id);
     //console.log(decoded._id);
     const user = await User.findById(decoded._id);
     const roll=user.rollno;
     const sem=user.sem;
     const sub=await subject.findOne({sem:sem});
     const userroll = await Result.findOne({rollno:roll});
+    if(!userroll)
+    {
+        res.render('resultnotadded');
+    }
+    else
+    {
     res.render('viewmarks',{userroll,user,sub});
+    }
 
 
 
@@ -305,6 +307,11 @@ route.post('/addmarks/(:id)', async (req, res) => {
 route.get('/home', (req, res) => {
     
     res.render('home');  
+
+});
+route.get('/resultnotadded', (req, res) => {
+    
+    res.render('resultnotadded');  
 
 });
 

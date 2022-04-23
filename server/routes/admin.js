@@ -11,11 +11,7 @@ router.get('/', (req, res) => {
     res.render('adminhome');
 
 });
-router.get('/adminlogin', (req, res) => {
-    
-    res.render('adminlogin');
 
-});
 
 // router.get('/admin/managestudent', (req, res) => {
     
@@ -68,20 +64,20 @@ router.get('/adminlogin', (req, res) => {
 
 // router.get('admin/semester', semester_controller.semester);
 // router.get('admin/', semester_controller.semester);
-router.post('/semester/create', semester_controller.semester_create);
-router.get('/semester/:id', semester_controller.semester_details);
-router.put('/semester/:id/update', semester_controller.semester_update);
-router.delete('/semester/:id/delete', semester_controller.semester_delete);
-router.post('/branch/create', branch_controller.branch_create);
-router.get('/branch/:id', branch_controller.branch_details);
-router.put('/branch/:id/update', branch_controller.branch_update);
-router.delete('/branch/:id/delete', branch_controller.branch_delete);
+// router.post('/semester/create', semester_controller.semester_create);
+// router.get('/semester/:id', semester_controller.semester_details);
+// router.put('/semester/:id/update', semester_controller.semester_update);
+// router.delete('/semester/:id/delete', semester_controller.semester_delete);
+// router.post('/branch/create', branch_controller.branch_create);
+// router.get('/branch/:id', branch_controller.branch_details);
+// router.put('/branch/:id/update', branch_controller.branch_update);
+// router.delete('/branch/:id/delete', branch_controller.branch_delete);
 // router.post('admin/subject/create', subject_controller.subject_create);
 // router.get('admin/subject/:id', subject_controller.subject_details);
 // router.put('admin/subject/:id/update', subject_controller.subject_update);
 // router.delete('admin/subject/:id/delete', subject_controller.subject_delete);
- router.post('admin/subject/create', student_controller.student_create);
-  router.get('admin/subject/:id', student_controller.student_details);
+//  router.post('admin/subject/create', student_controller.student_create);
+//   router.get('admin/subject/:id', student_controller.student_details);
 // router.put('admin/subject/:id/update', student_controller.student_update);
 // router.delete('admin/subject/:id/delete', student_controller.student_delete);
 
