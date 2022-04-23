@@ -20,25 +20,18 @@
       <br>
       <br>
       <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-     
-      <br>
-      <br>
-      <br>
-     
-      <br>
       
-      <br>
       <br>
       <br>
 			<h1>Manage Students</h1>
-       
-			
-      
+       <br>
+       <br>
+<!-- 			
+      <% if(message) { %>
+        <script>
+                alert('<%= message %>')
+        </script>
+      <% } %> -->
 			<table border="1px" align="center" class="tab">
         <tr>
 
@@ -56,13 +49,13 @@
           
           <td>Edit </td>
           <td>Delete </td>
-          <td>View Result</td>
+          <td>Add Result</td>
         </tr>
         <% for(var i = 0 ; i < user.length ; i++) {%>
         <tr>
            
           <td> <strong><%= user[i].rollno %></strong></td>
-          <td><strong> Msc IT</strong></td>
+          <td><strong> <%= user[i].branch %></strong></td>
           <td><strong> <%= user[i].email %> </strong></td>
           <td><strong><%= user[i].name %></strong></td>
           <td><strong> <%= user[i].gender %></strong></td>

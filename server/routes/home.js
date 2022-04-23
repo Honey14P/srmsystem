@@ -36,7 +36,7 @@ route.post('/login', async(req, res) => {
 
         if(email==="admin123@gmail.com" && password==="admin")
         {
-            res.render('adminhome');
+            res.redirect('/student/adminhome')
         }
         else{
         //console.log(`${email} ${password}`)
@@ -47,7 +47,8 @@ route.post('/login', async(req, res) => {
            // httpOnly:true
         });
         
-            res.status(200).render("studenthome",{message:null});
+            res.status(200);
+            res.redirect('/studenthome')
         }
         else{
             
