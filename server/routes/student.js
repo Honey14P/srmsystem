@@ -168,7 +168,7 @@ route.post('/addnewstudent', (req, res) => {
         });
 
         newUser.save();
-        res.status(200).render('adminhome');
+        res.status(200).render('adminhome',{message:null});
 
     } catch (error) {
         res.status(400);
