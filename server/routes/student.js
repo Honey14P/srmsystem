@@ -1,5 +1,6 @@
 const express = require('express');
 const jwt = require("jsonwebtoken");
+const Swal = require('sweetalert');
 const route = express.Router()
 
 var passport = require("passport");
@@ -29,7 +30,7 @@ route.use(passport.session());
 
 route.get('/adminhome', (req, res) => {
 
-    res.render('adminhome');
+    res.render('adminhome',{message:null});
 
 });
 route.get("/adminlogout", (req, res) => {
@@ -90,7 +91,7 @@ route.post('/addannouncement', (req, res) => {
         res.status(200).render('addannouncement', { message: "Annoncement Added " });
 
     } catch (error) {
-        res.status(400).render('Adminhome');
+        res.status(400).render('Adminhome',{message:null});
 
     }
 
@@ -107,7 +108,7 @@ route.get('/addmarks/(:id)', async function (req, res) {
     const user4 = Result.findById(req.params.id);
     if(user4)
     {
-          res.render('error');
+          res.render('adminhome',{message:"Already added"});
     }
     else{
         res.render('addmarks', { user3, useremail });
@@ -140,12 +141,12 @@ route.post('/addmarks/(:id)', async (req, res) => {
 
 
         await newResult.save();
-        res.status(200).render('adminhome');
+        res.status(200).render('adminhome',{message:null});
 
 
 
     } catch (error) {
-        res.status(400).render('adminhome');
+        res.status(400).render('adminhome',{message:null});
     }
 
 
