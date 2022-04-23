@@ -13,11 +13,7 @@
         </div>
 		
       </div>
-	  <% if(message)  { %>
-		<script>
-             alert('<%= message %>');
-		</script>
-	<% } %>
+	 
 <div class="container" id="container">
 	
 		<form action="/student/studentprofile" method="post">
@@ -31,7 +27,7 @@
 			<input type="text" name="gender" placeholder="Gender"  value='<%- user.gender %>' />
 			<input type="text" name="sem" placeholder="sem" readonly value='<%- user.sem %>'/>
 			<input type="text" name="phone" placeholder="phone" value='<%- user.phone %>' />
-			<button style="margin-top: 3%" > Update Profile</button>
+			<button type="submit" style="margin-top: 3%" > Update Profile</button>
 		</form>
 </div>
 

@@ -30,7 +30,7 @@ route.use(passport.session());
 
 route.get('/login', (req, res) => {
     
-    res.render('login');  
+    res.render('login',{message:null});  
 
 });
 
@@ -42,7 +42,7 @@ route.get('/adminhome', (req, res) => {
 route.get('/studenthome', (req, res) => {
     
     
-    res.render('studenthome');  
+    res.render('studenthome',{message:null});  
     
 });
 route.get('/error',(req, res) => {
@@ -67,11 +67,11 @@ route.post('/studentprofile', async (req, res) => {
     var decoded =decodeCookie(req.cookies.srms);
     console.log(decoded._id);
     //console.log(decoded._id);
-    const user = await User.findById(decoded._id);
+    const user3 = await User.findById(decoded._id);
     User.findByIdAndUpdate(decoded._id, {$set: req.body}, function () {
     
-        
-        res.render('studentprofile',{user:user,message:"Profile Updated"});
+        res.status(200);
+        res.render('studenthome',{message:"Profile Updated"});
     
         
     });
@@ -307,10 +307,10 @@ route.post('/login', async(req, res) => {
            // httpOnly:true
         });
         
-            res.status(200).render("studenthome");
+            res.status(200).render("studenthome",{message:"Welcome To result management System"});
         }else{
             
-            res.render('error');
+            res.status(304).render("login",{message:"Check Credentials"});
         }
     }
        //res.send(useremail);
@@ -342,7 +342,7 @@ route.post('/signup', (req, res) => {
         !req.body.password ||
         !req.body.sem
       ) {
-        return res.status(422).json({ err: "Please Enter in All the required field" });
+        return res.status(422).reneder({ err: "Please Enter in All the required field" });
       }
     console.log(req.body);
         let newUser = new User({
@@ -360,10 +360,10 @@ route.post('/signup', (req, res) => {
        
         
         newUser.save();
-        res.status(200).render("login");
+        res.status(200).render("login",{message:null});
 
     }catch(error){
-        res.status(400).send("Invalid");
+        res.status(404).render("error");
     }
     
 })
