@@ -28,11 +28,7 @@ route.use(passport.initialize());
 route.use(passport.session());
 
 
-route.get('/login', (req, res) => {
-    
-    res.render('login',{message:null});  
 
-});
 
 route.get('/adminhome', (req, res) => {
     
@@ -288,39 +284,6 @@ route.get('/home', (req, res) => {
 
 
 
-route.post('/login', async(req, res) => {
-    try{
-        const email=req.body.email;
-        const password=req.body.password;
-        const useremail = await User.findOne({email:email});
-
-        if(email==="admin123@gmail.com" && password==="admin")
-        {
-            res.render('adminhome');
-        }
-        else{
-        //console.log(`${email} ${password}`)
-        if(useremail.password===password){
-            const token = await useremail.generateAuthToken();
-            res.cookie("srms",token,{
-            expires:new Date(Date.now()+1800000),
-           // httpOnly:true
-        });
-        
-            res.status(200).render("studenthome",{message:"Welcome To result management System"});
-        }else{
-            
-            res.status(304).render("login",{message:"Check Credentials"});
-        }
-    }
-       //res.send(useremail);
-        //console.log(useremail);
-
-    }catch(error){
-        res.render('error');
-    }
-
-});
 
 
 route.get("/logout", (req, res) => {
@@ -330,43 +293,43 @@ route.get("/logout", (req, res) => {
 
   });
 
-route.post('/signup', (req, res) => {
-    try{
-    if (
-        !req.body.name ||   
-        !req.body.email ||
-        !req.body.rollno ||
-        !req.body.gender ||
-        !req.body.phone ||
-        !req.body.branch ||
-        !req.body.password ||
-        !req.body.sem
-      ) {
-        return res.status(422).reneder({ err: "Please Enter in All the required field" });
-      }
-    console.log(req.body);
-        let newUser = new User({
-            name: req.body.name,
-            email: req.body.email,
-            rollno: req.body.rollno,
-            gender:req.body.gender,
-            phone:req.body.phone,
-            branch:req.body.branch,
-            password:req.body.password,
-            sem:req.body.sem
-        });
+// route.post('/signup', (req, res) => {
+//     try{
+//     if (
+//         !req.body.name ||   
+//         !req.body.email ||
+//         !req.body.rollno ||
+//         !req.body.gender ||
+//         !req.body.phone ||
+//         !req.body.branch ||
+//         !req.body.password ||
+//         !req.body.sem
+//       ) {
+//         return res.status(422).render({ err: "Please Enter in All the required field" });
+//       }
+//     console.log(req.body);
+//         let newUser = new User({
+//             name: req.body.name,
+//             email: req.body.email,
+//             rollno: req.body.rollno,
+//             gender:req.body.gender,
+//             phone:req.body.phone,
+//             branch:req.body.branch,
+//             password:req.body.password,
+//             sem:req.body.sem
+//         });
        
         
        
         
-        newUser.save();
-        res.status(200).render("login",{message:null});
+//         newUser.save();
+//         res.status(200).render('login',{message:null});
 
-    }catch(error){
-        res.status(404).render("error");
-    }
+//     }catch(error){
+//         res.status(404).render("error");
+//     }
     
-})
+// })
 
 
 
