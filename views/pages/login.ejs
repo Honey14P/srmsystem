@@ -15,11 +15,13 @@
 	</div>
 	
 	<div class="form-container sign-in-container">
-		<form action="/student/login" method="post">
+		<form action="/login" id="form" onsubmit="validate()"  method="post">
 			<h1>Log in</h1>
 			
-			<input type="email" name="email" required placeholder="Email" />
-			<input type="password" name="password" required  placeholder="Password" />
+			<input type="email" required name="email" onchange="validate1()" id="email" placeholder="Email" />
+			<span class="small" id="p"></span>
+			<input type="password" required name="password" id="password"  placeholder="Password" />
+			<span class="small" id="p"></span>
 			<button>Login</a></button>
 		</form>
 	</div>
@@ -37,6 +39,47 @@
 
 </body>
 <script>
-	
+	function validate1(){
+				const form= document.getElementById('form');
+				const email= document.getElementById('email').value;
+				const pattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/
+				
+				if(email.match(pattern)){
+					$('#p').html('Email Is Valid').css('color', 'Green');
+				}else{
+					$('#p').html('Email Is Not Valid').css('color', 'red');
+				}
+				if(email == "")
+					{
+					$('#p').html('Email Field Is Empty').css('color', 'red');
+					}
+			}
+	function validate(){
+    const form= document.getElementById('form');
+				const email= document.getElementById('username').value;
+				const pass= document.getElementById('password').value;
+				const pattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/
+				const pattern1=/(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}/
+				
+				if(email == "" || email == null && pass == "" || pass == null)
+				{
+					//alert("if....");
+					$('#p2').html('Please Check Enter Email-Id & Password').css('color', 'red');
+             		return false;
+				}
+				else
+				{
+					if(email.match(pattern) && pass.match(pattern1))
+					{
+						//alert("else if....");
+						return true;
+					}
+					else
+					{
+						$('#p2').html('Please check Enter Email-Id & Password').css('color', 'red');
+						return false;
+					}
+				}
+            }
 </script>
 </html>

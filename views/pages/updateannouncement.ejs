@@ -1,0 +1,37 @@
+<html>
+<head>
+	<title>Add new Announcement</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../.././css/addnewstudentnew.css">
+<body>
+	<img src="../.././img/dahome.jpeg" style="border-radius: 48%; margin-right: 85%; margin-top: 5%">
+	<div class="content">
+        <div class="info">
+         	<h2 style="margin-top: -10%">Student Result MAnagement System</h2>
+			 <button  style="margin-left: 110%; margin-top: -5%;" onclick="window.location.href='/student/adminhome'">Home</button>
+         	
+        </div>
+      </div>
+<div class="container" id="container">
+	
+		<form action="/student/updateannouncement/<%=announce.id%>" method="post">
+			<br>
+			<h1>Add new Announcement</h1>
+			<br>
+            
+			<input type="text" required style="background-color: lightgrey; " name="email"   value='<%=announce.name %>'>
+			<textarea type="text" cols="79" rows="5" required   style="background-color: lightgrey; border: none" value='<%=announce.name %>'  name="password" ><%=announce.link %></textarea>
+           
+               
+			<button style="margin-top: 10%">Update</button>
+		</form>
+
+	
+</div>
+
+
+</body>
+<script>
+	
+</script>
+</html>

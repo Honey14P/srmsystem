@@ -28,21 +28,18 @@ route.use(passport.initialize());
 route.use(passport.session());
 
 
-route.get('/login', (req, res) => {
-    
-    res.render('login');  
 
-});
 
 route.get('/adminhome', (req, res) => {
     
     res.render('adminhome');  
 
 });
+
 route.get('/studenthome', (req, res) => {
     
     
-    res.render('studenthome');  
+    res.render('studenthome',{message:null});  
     
 });
 route.get('/error',(req, res) => {
@@ -57,13 +54,30 @@ route.get('/studentprofile', async (req, res) => {
     console.log(decoded._id);
     //console.log(decoded._id);
     const user = await User.findById(decoded._id);
-    res.render('studentprofile',{user});
+    console.log(user)
+    res.render('studentprofile',{user:user,message:null});
+
+
+});
+route.post('/studentprofile', async (req, res) => {
+    console.log(`this is cookies ${req.cookies.srms}`);
+    var decoded =decodeCookie(req.cookies.srms);
+    console.log(decoded._id);
+    //console.log(decoded._id);
+    const user3 = await User.findById(decoded._id);
+    User.findByIdAndUpdate(decoded._id, {$set: req.body}, function () {
+    
+        res.status(200);
+        res.render('studenthome',{message:"Profile Updated"});
+    
+        
+    });
 
 
 });
 route.get('/addnewstudent',(req, res) =>
 {
-  res.render('addnewstudent')
+  res.render('addnewstudent');
 });
 route.get('/managestudent', async (req, res) => {  
     const user =  await User.find({});
@@ -71,10 +85,37 @@ route.get('/managestudent', async (req, res) => {
 
 
 });
+route.get('/manageannouncement', async (req, res) => {  
+    const announce =  await announcement.find({});
+    res.render('manageannouncement',{announce});
+
+
+});
+route.get('/deleteannouncement/:id', function(req, res, next) {
+    announcement.findByIdAndRemove(req.params.id, (err, doc) => {
+        if (!err) {
+            res.redirect('/student/manageannouncement');
+        } else {
+            console.log('Failed to Delete user Details: ' + err);
+        }
+    });
+});
+
+route.get('/updateannouncement/:id',  async function(req, res) {
+    const announce = await announcement.findById(req.params.id);
+    res.render('updateannouncement',{announce});
+});
+
+route.post('/updateannouncement/(:id)', function(req, res) {
+    announcement.findByIdAndUpdate(req.params.id, {$set: req.body.email}, function () {
+
+        res.redirect('/student/manageannouncement');
+    });
+});
 route.get('/addannouncement', async (req, res) => {  
     // const an =  await announcement.find({});
     // console.log("ans"+an);
-    res.render('addannouncement');
+    res.render('addannouncement',{message:null});
 
 
 });
@@ -96,7 +137,7 @@ route.post('/addannouncement', (req, res) => {
             !req.body.password
            
           ) {
-            return res.status(422).json({ err: "Please Enter in All the required field" });
+            return res.status(422).render('adminhome')
           }
         
             let newannouncement = new announcement({
@@ -109,10 +150,11 @@ route.post('/addannouncement', (req, res) => {
            
             
             newannouncement.save();
-            res.status(200).render('addannouncement');
+            res.status(200).render('addannouncement',{message:"Annoncement Added "});
     
         }catch(error){
-            res.status(400).send("Invalid");
+           res.status(400).render('error');
+           //afafwfaw
         }
         
     
@@ -156,9 +198,9 @@ route.post('/addnewstudent',(req, res) =>
             
                 res.json({
                   status:404,
-                  message:"Your feedback successfully saved."
+                  message:"Not Added",
                 });
-        
+            
             
           
         console.log(req.body);
@@ -177,11 +219,11 @@ route.post('/addnewstudent',(req, res) =>
            
             
             newUser.save();
-            res.status(200).render("adminhome");
+            res.status(200).render('adminhome');
     
         }catch(error){
             res.status(400);
-            res.render('addnewstudent');
+            res.render('error');
         }
     
 });
@@ -194,8 +236,10 @@ route.get('/viewmarks', async (req, res) => {
     //console.log(decoded._id);
     const user = await User.findById(decoded._id);
     const roll=user.rollno;
+    const sem=user.sem;
+    const sub=await subject.findOne({sem:sem});
     const userroll = await Result.findOne({rollno:roll});
-    res.render('viewmarks',{userroll,user});
+    res.render('viewmarks',{userroll,user,sub});
 
 
 
@@ -235,12 +279,12 @@ route.post('/addmarks/(:id)', async (req, res) => {
            
             
             await newResult.save();
-            res.status(200).render("adminhome");
+            res.status(200).render('adminhome');
             
             
     
         }catch(error){
-            res.status(400).send("Invalid");
+            res.status(400).render('error');
         }
         
     });
@@ -255,11 +299,7 @@ route.post('/addmarks/(:id)', async (req, res) => {
 
 
 
-route.get('/signup', (req, res) => {
-    
-    res.render('signup');  
 
-});
 
 
 route.get('/home', (req, res) => {
@@ -272,39 +312,12 @@ route.get('/home', (req, res) => {
 
 
 
-route.post('/login', async(req, res) => {
-    try{
-        const email=req.body.email;
-        const password=req.body.password;
-        const useremail = await User.findOne({email:email});
+route.get("/adminlogout", (req, res) => {
+    res.clearCookie("srms");
+    
+      res.redirect("/");
 
-        if(email==="admin123@gmail.com" && password==="admin")
-        {
-            res.render('adminhome');
-        }
-        else{
-        //console.log(`${email} ${password}`)
-        if(useremail.password===password){
-            const token = await useremail.generateAuthToken();
-            res.cookie("srms",token,{
-            expires:new Date(Date.now()+1800000),
-           // httpOnly:true
-        });
-        
-            res.status(200).render("studenthome");
-        }else{
-            
-            res.render('error');
-        }
-    }
-       //res.send(useremail);
-        //console.log(useremail);
-
-    }catch(error){
-        res.render('error');
-    }
-
-});
+  });
 
 
 route.get("/logout", (req, res) => {
@@ -314,43 +327,43 @@ route.get("/logout", (req, res) => {
 
   });
 
-route.post('/signup', (req, res) => {
-    try{
-    if (
-        !req.body.name ||   
-        !req.body.email ||
-        !req.body.rollno ||
-        !req.body.gender ||
-        !req.body.phone ||
-        !req.body.branch ||
-        !req.body.password ||
-        !req.body.sem
-      ) {
-        return res.status(422).json({ err: "Please Enter in All the required field" });
-      }
-    console.log(req.body);
-        let newUser = new User({
-            name: req.body.name,
-            email: req.body.email,
-            rollno: req.body.rollno,
-            gender:req.body.gender,
-            phone:req.body.phone,
-            branch:req.body.branch,
-            password:req.body.password,
-            sem:req.body.sem
-        });
+// route.post('/signup', (req, res) => {
+//     try{
+//     if (
+//         !req.body.name ||   
+//         !req.body.email ||
+//         !req.body.rollno ||
+//         !req.body.gender ||
+//         !req.body.phone ||
+//         !req.body.branch ||
+//         !req.body.password ||
+//         !req.body.sem
+//       ) {
+//         return res.status(422).render({ err: "Please Enter in All the required field" });
+//       }
+//     console.log(req.body);
+//         let newUser = new User({
+//             name: req.body.name,
+//             email: req.body.email,
+//             rollno: req.body.rollno,
+//             gender:req.body.gender,
+//             phone:req.body.phone,
+//             branch:req.body.branch,
+//             password:req.body.password,
+//             sem:req.body.sem
+//         });
        
         
        
         
-        newUser.save();
-        res.status(200).render("login");
+//         newUser.save();
+//         res.status(200).render('login',{message:null});
 
-    }catch(error){
-        res.status(400).send("Invalid");
-    }
+//     }catch(error){
+//         res.status(404).render("error");
+//     }
     
-})
+// })
 
 
 

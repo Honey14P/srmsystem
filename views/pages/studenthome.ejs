@@ -12,12 +12,17 @@
 
     <section>
       <header>
+        <% if(message)  { %>
+          <script>
+                   alert('<%= message %>');
+          </script>
+        <% } %>
         <h2><script src="https://cdn.lordicon.com/lusqsztk.js"></script>
 <img src="../.././img/dahome.jpeg" style="border-radius: 48%"></h2>
         <div class="navigation">
-         	<a href="viewmarks">View Result</a>
-         	<a href="announcement">Announcements</a>
-         	<a href="studentprofile">View Profile</a>
+         	<a href="/student/viewmarks">View Result</a>
+         	<a href="/student/announcement">Announcements</a>
+         	<a href="/student/studentprofile">View Profile</a>
          	<a href="/student/logout">Logout</a>
         </div>
      </header>
@@ -28,7 +33,19 @@
          	
         </div>
       </div>
-
+      <table style="margin-right: 13%; margin-top: 5%" >
+        <tr align="center">
+          <th>Address</th>
+          <th>Contact Number</th>
+          <th>Email Address</th>
+        </tr>
+  
+        <tr align="center">
+          <td>Reliance Cross Rd, Gandhinagar, Gujarat</td>
+          <td>+(91) 8899889988</td>
+          <td>DAIICT@gmail.com</td>
+        </tr>
+      </table>
      
     </section>
   </body>
