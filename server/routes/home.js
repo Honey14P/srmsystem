@@ -47,7 +47,7 @@ route.post('/login', async(req, res) => {
            // httpOnly:true
         });
         
-            res.status(200).render("studenthome");
+            res.status(200).render("studenthome",{message:null});
         }
         else{
             
