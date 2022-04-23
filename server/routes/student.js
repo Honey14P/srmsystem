@@ -1,6 +1,6 @@
 const express = require('express');
 const jwt = require("jsonwebtoken");
-const Swal = require('sweetalert');
+
 const route = express.Router()
 
 var passport = require("passport");
