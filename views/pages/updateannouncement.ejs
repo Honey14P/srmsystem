@@ -8,22 +8,19 @@
 	<div class="content">
         <div class="info">
          	<h2 style="margin-top: -10%">Student Result MAnagement System</h2>
-			 <button  style="margin-left: 110%; margin-top: -5%;" onclick="window.location.href='adminhome'">Home</button>
+			 <button  style="margin-left: 110%; margin-top: -5%;" onclick="window.location.href='/student/adminhome'">Home</button>
          	
         </div>
       </div>
 <div class="container" id="container">
-	<% if(message)  { %>
-		<script>
-				 alert('<%= message %>');
-		</script>
-	  <% } %>
+	
 		<form action="/student/updateannouncement/<%= announce.id%>" method="post">
 			<br>
 			<h1>Add new Announcement</h1>
 			<br>
-			<input type="text" style="background-color: lightgrey; " name="email"   value='<%=announce.name %>'placeholder="title" />
-			<textarea type="text" cols="79" rows="5" style="background-color: lightgrey; border: none"   value='<%=announce.link %>'name="password" placeholder="Enter link"></textarea>
+            
+			<input type="text" style="background-color: lightgrey; " name="email"   value='<%=announce.name %>' placeholder="title" />
+			<textarea type="text" cols="79" rows="5"    style="background-color: lightgrey; border: none"   name="password" ><%=announce.link %></textarea>
            
                
 			<button style="margin-top: 10%">Update</button>
