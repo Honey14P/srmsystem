@@ -14,13 +14,13 @@
       </div>
 <div class="container" id="container">
 	
-		<form action="/student/updateannouncement/<%= announce.id%>" method="post">
+		<form action="/student/updateannouncement/<%=announce.id%>" method="post">
 			<br>
 			<h1>Add new Announcement</h1>
 			<br>
             
-			<input type="text" style="background-color: lightgrey; " name="email"   value='<%=announce.name %>' placeholder="title" />
-			<textarea type="text" cols="79" rows="5"    style="background-color: lightgrey; border: none"   name="password" ><%=announce.link %></textarea>
+			<input type="text" required style="background-color: lightgrey; " name="email"   value='<%=announce.name %>'>
+			<textarea type="text" cols="79" rows="5" required   style="background-color: lightgrey; border: none" value='<%=announce.name %>'  name="password" ><%=announce.link %></textarea>
            
                
 			<button style="margin-top: 10%">Update</button>

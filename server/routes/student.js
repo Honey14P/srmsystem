@@ -32,7 +32,7 @@ route.use(passport.session());
 
 route.get('/adminhome', (req, res) => {
     
-    res.render('adminhome',{message:null});  
+    res.render('adminhome');  
 
 });
 
@@ -77,7 +77,7 @@ route.post('/studentprofile', async (req, res) => {
 });
 route.get('/addnewstudent',(req, res) =>
 {
-  res.render('addnewstudent')
+  res.render('addnewstudent');
 });
 route.get('/managestudent', async (req, res) => {  
     const user =  await User.find({});
@@ -101,20 +101,21 @@ route.get('/deleteannouncement/:id', function(req, res, next) {
     });
 });
 
-route.get('/updateannouncement/(:id)',  async function(req, res) {
+route.get('/updateannouncement/:id',  async function(req, res) {
     const announce = await announcement.findById(req.params.id);
     res.render('updateannouncement',{announce});
-})
-route.post('/updateannouncement/(:id)',  function(req, res) {
-    announcement.findByIdAndUpdate(req.params.id, {$set: req.body}, function () {
+});
+
+route.post('/updateannouncement/(:id)', function(req, res) {
+    announcement.findByIdAndUpdate(req.params.id, {$set: req.body.email}, function () {
 
         res.redirect('/student/manageannouncement');
     });
-})
+});
 route.get('/addannouncement', async (req, res) => {  
     // const an =  await announcement.find({});
     // console.log("ans"+an);
-    res.render('addannouncement');
+    res.render('addannouncement',{message:null});
 
 
 });
@@ -197,9 +198,9 @@ route.post('/addnewstudent',(req, res) =>
             
                 res.json({
                   status:404,
-                  message:"Your feedback successfully saved."
+                  message:"Not Added",
                 });
-        
+            
             
           
         console.log(req.body);
@@ -218,7 +219,7 @@ route.post('/addnewstudent',(req, res) =>
            
             
             newUser.save();
-            res.status(200).render("adminhome",{message:"New Student Added"});
+            res.status(200).render('adminhome');
     
         }catch(error){
             res.status(400);
@@ -278,7 +279,7 @@ route.post('/addmarks/(:id)', async (req, res) => {
            
             
             await newResult.save();
-            res.status(200).render('adminhome',{message:"Marks Added"});
+            res.status(200).render('adminhome');
             
             
     

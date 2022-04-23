@@ -36,7 +36,7 @@ route.post('/login', async(req, res) => {
 
         if(email==="admin123@gmail.com" && password==="admin")
         {
-            res.render('adminhome',{message:null});
+            res.render('adminhome');
         }
         else{
         //console.log(`${email} ${password}`)
