@@ -48,7 +48,7 @@ route.post('/login', async(req, res) => {
         });
         
             res.status(200);
-            res.redirect('/studenthome')
+            res.render('studenthome',{message:null})
         }
         else{
             
