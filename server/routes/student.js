@@ -32,9 +32,10 @@ route.use(passport.session());
 
 route.get('/adminhome', (req, res) => {
     
-    res.render('adminhome');  
+    res.render('adminhome',{message:null});  
 
 });
+
 route.get('/studenthome', (req, res) => {
     
     
@@ -122,10 +123,10 @@ route.post('/addannouncement', (req, res) => {
            
             
             newannouncement.save();
-            res.status(200).render('addannouncement');
+            res.status(200).render('addannouncement',{message:"Annoncement Added "});
     
         }catch(error){
-           res.status(400).send("Invalid");
+           res.status(400).render('error');
            //afafwfaw
         }
         
@@ -191,11 +192,11 @@ route.post('/addnewstudent',(req, res) =>
            
             
             newUser.save();
-            res.status(200).render("adminhome");
+            res.status(200).render("adminhome",{message:"New Student Added"});
     
         }catch(error){
             res.status(400);
-            res.render('addnewstudent');
+            res.render('error');
         }
     
 });
@@ -251,12 +252,12 @@ route.post('/addmarks/(:id)', async (req, res) => {
            
             
             await newResult.save();
-            res.status(200).render("adminhome");
+            res.status(200).render('adminhome',{message:"Marks Added"});
             
             
     
         }catch(error){
-            res.status(400).send("Invalid");
+            res.status(400).render('error');
         }
         
     });
@@ -284,6 +285,12 @@ route.get('/home', (req, res) => {
 
 
 
+route.get("/adminlogout", (req, res) => {
+    res.clearCookie("srms");
+    
+      res.redirect("/");
+
+  });
 
 
 route.get("/logout", (req, res) => {

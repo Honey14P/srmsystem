@@ -47,7 +47,7 @@ route.post('/login', async(req, res) => {
            // httpOnly:true
         });
         
-            res.status(200).render("studenthome",{message:"Welcome To result management System"});
+            res.status(200).render("studenthome");
         }
         else{
             
