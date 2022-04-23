@@ -92,7 +92,7 @@ route.get('/manageannouncement', async (req, res) => {
 
 });
 route.get('/deleteannouncement/:id', function(req, res, next) {
-    User.findByIdAndRemove(req.params.id, (err, doc) => {
+    announcement.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err) {
             res.redirect('/student/manageannouncement');
         } else {
@@ -102,11 +102,11 @@ route.get('/deleteannouncement/:id', function(req, res, next) {
 });
 
 route.get('/updateannouncement/(:id)',  async function(req, res) {
-    const user3 = await User.findById(req.params.id);
-    res.render('updateannouncement',{user3});
+    const announce = await announcement.findById(req.params.id);
+    res.render('updateannouncement',{announce});
 })
-route.post('/updateprofile/(:id)',  function(req, res) {
-    User.findByIdAndUpdate(req.params.id, {$set: req.body}, function () {
+route.post('/updateannouncement/(:id)',  function(req, res) {
+    announcement.findByIdAndUpdate(req.params.id, {$set: req.body}, function () {
 
         res.redirect('/student/manageannouncement');
     });
