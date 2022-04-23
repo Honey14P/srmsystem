@@ -85,6 +85,32 @@ route.get('/managestudent', async (req, res) => {
 
 
 });
+route.get('/manageannouncement', async (req, res) => {  
+    const announce =  await announcement.find({});
+    res.render('manageannouncement',{announce});
+
+
+});
+route.get('/deleteannouncement/:id', function(req, res, next) {
+    User.findByIdAndRemove(req.params.id, (err, doc) => {
+        if (!err) {
+            res.redirect('/student/manageannouncement');
+        } else {
+            console.log('Failed to Delete user Details: ' + err);
+        }
+    });
+});
+
+route.get('/updateannouncement/(:id)',  async function(req, res) {
+    const user3 = await User.findById(req.params.id);
+    res.render('updateannouncement',{user3});
+})
+route.post('/updateprofile/(:id)',  function(req, res) {
+    User.findByIdAndUpdate(req.params.id, {$set: req.body}, function () {
+
+        res.redirect('/student/manageannouncement');
+    });
+})
 route.get('/addannouncement', async (req, res) => {  
     // const an =  await announcement.find({});
     // console.log("ans"+an);
@@ -110,7 +136,7 @@ route.post('/addannouncement', (req, res) => {
             !req.body.password
            
           ) {
-            return res.status(422).json({ err: "Please Enter in All the required field" });
+            return res.status(422).render('adminhome')
           }
         
             let newannouncement = new announcement({
