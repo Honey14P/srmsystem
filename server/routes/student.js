@@ -106,13 +106,9 @@ route.get('/addmarks/(:id)', async function (req, res) {
     const branch = user3.branch;
     const useremail = await subject.findOne({ sem: sem });
     const user4 = Result.findById(req.params.id);
-    if(user4)
-    {
-          res.render('adminhome',{message:"Already added"});
-    }
-    else{
+   
         res.render('addmarks', { user3, useremail });
-    }
+    
 });
 route.post('/addmarks/(:id)', async (req, res) => {
     
