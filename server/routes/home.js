@@ -3,18 +3,17 @@ const jwt=require("jsonwebtoken");
 const route = express.Router()
 
 const cookieParser = require("cookie-parser");
-var passport = require("passport");
+
 const decodeCookie = require("jwt-decode");
 
 route.use(cookieParser()); 
-var bcrypt = require("bcrypt");
+
 
 
 var User = require("../models/student");
 const { render } = require('ejs');
 
-route.use(passport.initialize());
-route.use(passport.session());
+
 
 route.get('/', (req, res) => {
     

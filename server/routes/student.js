@@ -3,10 +3,8 @@ const jwt = require("jsonwebtoken");
 
 const route = express.Router()
 
-var passport = require("passport");
 const cookieParser = require("cookie-parser");
 const decodeCookie = require("jwt-decode");
-var LocalStrategy = require("passport-local");
 
 route.use(cookieParser());
 
@@ -22,8 +20,6 @@ const cons = require('consolidate');
 const { default: mongoose } = require('mongoose');
 const router = require('./admin');
 
-route.use(passport.initialize());
-route.use(passport.session());
 
 
 
